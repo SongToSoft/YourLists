@@ -15,14 +15,18 @@ using System.Windows.Shapes;
 
 namespace ArchiveManager
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            LoadAnimeList();
+        }
+
+        public void LoadAnimeList()
+        {
+            ArchiveObject dataUser = new ArchiveObject("12321", 4, 2, 3, false); 
+            AnimeListView.Items.Add(dataUser);
         }
     }
 }

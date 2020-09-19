@@ -9,7 +9,25 @@
     <Grid>
         <TabControl Margin="10,0,10,10">
             <TabItem Header="Animes">
-                <Grid Background="#FFE5E5E5"/>
+                <ListView Name="AnimeListView" Margin="0,0,-5,-3">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Image" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Width="30" Source="{Binding photo}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Name" Width="50" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </TabItem>
             <TabItem Header="Games">
                 <Grid Background="#FFE5E5E5"/>
