@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArchiveManager
+{
+    enum ECollectionType
+    {
+        ANIME,
+        BOOK,
+        FILM,
+        GAME
+    }
+
+    [DataContract]
+    class ArchiveCollection
+    {
+        [DataMember]
+        private List<ArchiveObject> archiveObjects;
+        private string fileName;
+
+        public ArchiveCollection(ECollectionType collectionType)
+        {
+            archiveObjects = new List<ArchiveObject>();
+            switch (collectionType)
+            {
+                case ECollectionType.ANIME:
+                    fileName = "DataBase/anime.json";
+                    break;
+                case ECollectionType.BOOK:
+                    fileName = "DataBase/book.json";
+                    break;
+                case ECollectionType.FILM:
+                    fileName = "DataBase/film.json";
+                    break;
+                case ECollectionType.GAME:
+                    fileName = "DataBase/game.json";
+                    break;
+                default:
+                    fileName = "DataBase/anime.json";
+                    break;
+            }
+            var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(fileName);
+            archiveObjects = collection.GetArchiveObjects();
+        }
+
+        public List<ArchiveObject> GetArchiveObjects()
+        {
+            return archiveObjects;
+        }
+
+        public void AddObject(ArchiveObject newObject)
+        {
+            archiveObjects.Add(newObject);
+        }
+
+        public void SaveArchiveObjects()
+        {
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
+        }
+    }
+}

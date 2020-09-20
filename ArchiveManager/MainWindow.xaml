@@ -21,7 +21,49 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="50" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Books">
+                <ListView Name="BookListView" Margin="0,0,-5,-3">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Image" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Width="30" Source="{Binding photo}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Films">
+                <ListView Name="FilmListView" Margin="0,0,-5,-3">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Image" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Width="30" Source="{Binding photo}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
@@ -30,13 +72,31 @@
                 </ListView>
             </TabItem>
             <TabItem Header="Games">
-                <Grid Background="#FFE5E5E5"/>
+                <ListView Name="GameListView" Margin="0,0,-5,-3">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Image" Width="50">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Width="30" Source="{Binding photo}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </TabItem>
-            <TabItem Header="Books">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Films">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Add New Object">
+                <Canvas>
+                    <Button Content="Add" Canvas.Left="396" Canvas.Top="53" Width="75"/>
+                    <TextBox Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="50" Width="201"/>
+                </Canvas>
             </TabItem>
         </TabControl>
     </Grid>
