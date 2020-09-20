@@ -25,7 +25,7 @@ namespace ArchiveManager
 
         public void LoadAnimeList()
         {
-            ArchiveObject dataUser = new ArchiveObject("12321", 4, 2, 3, false); 
+            ArchiveObject dataUser = new ArchiveObject("12321", 4, 2, 3, false);
             AnimeListView.Items.Add(dataUser);
         }
     }
