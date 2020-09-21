@@ -55,6 +55,7 @@ namespace ArchiveManager
         public void AddObject(ArchiveObject newObject)
         {
             archiveObjects.Add(newObject);
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
         }
 
         public void SaveArchiveObjects()

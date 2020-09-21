@@ -37,7 +37,6 @@ namespace ArchiveManager
             {
                 AnimeListView.Items.Add(animeObjects[i]);
             }
-            animeCollection.SaveArchiveObjects();
         }
 
         public void LoadBookList()
@@ -48,7 +47,6 @@ namespace ArchiveManager
             {
                 BookListView.Items.Add(bookObjects[i]);
             }
-            bookCollection.SaveArchiveObjects();
         }
 
         public void LoadFilmList()
@@ -59,7 +57,6 @@ namespace ArchiveManager
             {
                 FilmListView.Items.Add(filmObjects[i]);
             }
-            filmCollection.SaveArchiveObjects();
         }
 
         public void LoadGameList()
@@ -70,7 +67,69 @@ namespace ArchiveManager
             {
                 GameListView.Items.Add(gameObjects[i]);
             }
-            gameCollection.SaveArchiveObjects();
+        }
+
+        private void AddObjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = AddObjectName.GetLineText(0);
+            float score = 0;
+            float timeForComplete = 0;
+            int releaseYear = 0;
+            try
+            {
+                score = float.Parse(AddObjectScore.GetLineText(0));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Incorrect Score on Add");
+            }
+            try
+            {
+                timeForComplete = float.Parse(AddObjectTimeForComplete.GetLineText(0));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Incorrect Time For Complete on Add");
+            }
+            try
+            {
+                releaseYear = int.Parse(AddObjectReleaseYear.GetLineText(0));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Incorrect Release Year on Add");
+            }
+            bool isCompleted = (AddObjectIsCompleted.IsChecked != null) ? AddObjectIsCompleted.IsChecked.Value : false;
+            ArchiveObject newObject = new ArchiveObject(name, score, timeForComplete, releaseYear, isCompleted);
+
+            ComboBox comboBox = (ComboBox)AddObjectType;
+            var selectedItem = (TextBlock)comboBox.SelectedItem;
+            if (selectedItem != null)
+            {
+                switch (selectedItem.Text)
+                {
+                    case "Anime":
+                        animeCollection.AddObject(newObject);
+                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                        AnimeListView.Items.Add(newObject);
+                        break;
+                    case "Book":
+                        bookCollection.AddObject(newObject);
+                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                        BookListView.Items.Add(newObject);
+                        break;
+                    case "Film":
+                        filmCollection.AddObject(newObject);
+                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                        FilmListView.Items.Add(newObject);
+                        break;
+                    case "Game":
+                        gameCollection.AddObject(newObject);
+                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                        GameListView.Items.Add(newObject);
+                        break;
+                }
+            }
         }
     }
 }

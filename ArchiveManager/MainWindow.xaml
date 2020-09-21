@@ -24,7 +24,7 @@
                             <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -42,10 +42,10 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Name" Width="170" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -66,7 +66,7 @@
                             <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -87,15 +87,25 @@
                             <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Complete" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </TabItem>
             <TabItem Header="Add New Object">
                 <Canvas>
-                    <Button Content="Add" Canvas.Left="396" Canvas.Top="53" Width="75"/>
-                    <TextBox Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="50" Width="201"/>
+                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="48" Canvas.Top="50" Width="201">
+                        <TextBlock>Anime</TextBlock>
+                        <TextBlock>Book</TextBlock>
+                        <TextBlock>Film</TextBlock>
+                        <TextBlock>Game</TextBlock>
+                    </ComboBox>
+                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="366" Canvas.Top="50" Width="75" Height="24" Click="AddObjectButton_Click"/>
+                    <TextBox Name="AddObjectName" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="90" Width="201"/>
+                    <TextBox Name="AddObjectScore" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Score" Canvas.Top="130" Width="201"/>
+                    <TextBox Name="AddObjectTimeForComplete" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Time For Complete" Canvas.Top="170" Width="201"/>
+                    <TextBox Name="AddObjectReleaseYear" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Release Year" Canvas.Top="210" Width="201"/>
+                    <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="48" Canvas.Top="250"/>
                 </Canvas>
             </TabItem>
         </TabControl>
