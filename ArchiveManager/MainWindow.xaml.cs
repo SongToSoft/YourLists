@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArchiveManager.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,7 @@ namespace ArchiveManager
         {
             string name = AddObjectName.GetLineText(0);
             float score = 0;
+            string genre = AddObjectGenre.GetLineText(0);
             float timeForComplete = 0;
             int releaseYear = 0;
             try
@@ -100,7 +102,7 @@ namespace ArchiveManager
                 Console.WriteLine("Incorrect Release Year on Add");
             }
             bool isCompleted = (AddObjectIsCompleted.IsChecked != null) ? AddObjectIsCompleted.IsChecked.Value : false;
-            ArchiveObject newObject = new ArchiveObject(name, score, timeForComplete, releaseYear, isCompleted);
+            ArchiveObject newObject = new ArchiveObject(name, score, timeForComplete, releaseYear, isCompleted, genre);
 
             ComboBox comboBox = (ComboBox)AddObjectType;
             var selectedItem = (TextBlock)comboBox.SelectedItem;
@@ -109,26 +111,64 @@ namespace ArchiveManager
                 switch (selectedItem.Text)
                 {
                     case "Anime":
-                        animeCollection.AddObject(newObject);
-                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
-                        AnimeListView.Items.Add(newObject);
+                        if (!animeCollection.IsContain(name))
+                        {
+                            animeCollection.AddObject(newObject);
+                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            AnimeListView.Items.Add(newObject);
+                        }
+                        else
+                        {
+                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                        }
                         break;
                     case "Book":
-                        bookCollection.AddObject(newObject);
-                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
-                        BookListView.Items.Add(newObject);
+                        if (!bookCollection.IsContain(name))
+                        {
+                            bookCollection.AddObject(newObject);
+                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            BookListView.Items.Add(newObject);
+                        }
+                        else
+                        {
+                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                        }
                         break;
                     case "Film":
-                        filmCollection.AddObject(newObject);
-                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
-                        FilmListView.Items.Add(newObject);
+                        if (!filmCollection.IsContain(name))
+                        {
+                            filmCollection.AddObject(newObject);
+                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            FilmListView.Items.Add(newObject);
+                        }
+                        else
+                        {
+                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                        }
                         break;
                     case "Game":
-                        gameCollection.AddObject(newObject);
-                        MessageBox.Show(selectedItem.Text + ": " + name + " was added");
-                        GameListView.Items.Add(newObject);
+                        if (!gameCollection.IsContain(name))
+                        {
+                            gameCollection.AddObject(newObject);
+                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            GameListView.Items.Add(newObject);
+                        }
+                        else
+                        {
+                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                        }
                         break;
                 }
+            }
+        }
+
+        private void DeleteAnimeObjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                animeCollection.RemoveObject(selectedItem);
+                AnimeListView.Items.Remove(AnimeListView.SelectedItem);
             }
         }
     }

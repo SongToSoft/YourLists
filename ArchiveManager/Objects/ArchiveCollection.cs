@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArchiveManager
+namespace ArchiveManager.Objects
 {
     enum ECollectionType
     {
@@ -58,9 +58,27 @@ namespace ArchiveManager
             SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
         }
 
+        public void RemoveObject(ArchiveObject removableObject)
+        {
+            archiveObjects.Remove(removableObject);
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this, System.IO.FileMode.CreateNew);
+        }
+
         public void SaveArchiveObjects()
         {
             SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
+        }
+
+        public bool IsContain(string name)
+        {
+            for (int i = 0; i < archiveObjects.Count; ++i)
+            {
+                if (archiveObjects[i].name == name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

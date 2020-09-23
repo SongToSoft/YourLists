@@ -13,6 +13,10 @@ namespace ArchiveManager
         public static void SaveValue<T>(string fileName, T value, FileMode fileMode = FileMode.OpenOrCreate)
         {
             var jsonFormatter = new DataContractJsonSerializer(typeof(T));
+            if (fileMode == FileMode.CreateNew && File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
             using (FileStream fs = new FileStream(fileName, fileMode))
             {
                 jsonFormatter.WriteObject(fs, value);

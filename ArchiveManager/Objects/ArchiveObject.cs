@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArchiveManager
+namespace ArchiveManager.Objects
 {
     [DataContract]
     class ArchiveObject
@@ -20,14 +20,20 @@ namespace ArchiveManager
         public int releaseYear { get; set; }
         [DataMember]
         public bool isCompleted { get; set; }
+        [DataMember]
+        public string genre { get; set; }
+        [DataMember]
+        public string creator { get; set; }
 
-        public ArchiveObject(string _name, float _score, float _timeForComplete, int _releaseYear, bool _isCompleted)
+        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "")
         {
             name = _name;
             score = _score;
             timeForComplete = _timeForComplete;
             releaseYear = _releaseYear;
             isCompleted = _isCompleted;
+            genre = _genre;
+            creator = _creator;
         }
     }
 }
