@@ -28,12 +28,18 @@ namespace ArchiveManager
         {
             selectedArchiveObject = archiveObject;
 
-            ChangeObjectName.Text = archiveObject.name;
-            ChangeObjectScore.Text = archiveObject.score.ToString();
-            ChangeObjectTimeForComplete.Text = archiveObject.timeForComplete.ToString();
-            ChangeObjectReleaseYear.Text = archiveObject.releaseYear.ToString();
-            ChangeObjectGenre.Text = archiveObject.genre;
-            ChangeObjectCreator.Text = archiveObject.creator;
+            if (archiveObject.name != "")
+                ChangeObjectName.Text = archiveObject.name;
+            if (archiveObject.score.ToString() != "")
+                ChangeObjectScore.Text = archiveObject.score.ToString();
+            if (archiveObject.timeForComplete.ToString() != "")
+                ChangeObjectTimeForComplete.Text = archiveObject.timeForComplete.ToString();
+            if (archiveObject.releaseYear.ToString() != "")
+                ChangeObjectReleaseYear.Text = archiveObject.releaseYear.ToString();
+            if (archiveObject.genre != "")
+                ChangeObjectGenre.Text = archiveObject.genre;
+            if (archiveObject.creator != "")
+                ChangeObjectCreator.Text = archiveObject.creator;
         }
 
         public void ChangeObjectButton_Click(object sender, RoutedEventArgs e)
