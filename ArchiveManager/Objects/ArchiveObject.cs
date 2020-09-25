@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ArchiveManager.Objects
 {
     [DataContract]
-    class ArchiveObject
+    public class ArchiveObject
     {
         [DataMember]
         public string name { get; set; }
@@ -24,8 +24,10 @@ namespace ArchiveManager.Objects
         public string genre { get; set; }
         [DataMember]
         public string creator { get; set; }
+        [DataMember]
+        public ECollectionType type { get; set; }
 
-        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "")
+        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME)
         {
             name = _name;
             score = _score;
@@ -34,6 +36,7 @@ namespace ArchiveManager.Objects
             isCompleted = _isCompleted;
             genre = _genre;
             creator = _creator;
+            type = _type;
         }
     }
 }

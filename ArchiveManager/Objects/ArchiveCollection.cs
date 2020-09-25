@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ArchiveManager.Objects
 {
-    enum ECollectionType
+    public enum ECollectionType
     {
         ANIME,
         BOOK,

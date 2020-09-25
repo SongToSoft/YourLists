@@ -56,8 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangeObjectWindow.xaml.cs">
+      <DependentUpon>ChangeObjectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Objects\ArchiveCollection.cs" />
     <Compile Include="SerializationJsonSystem.cs" />
+    <Compile Include="StaticContent.cs" />
+    <Page Include="ChangeObjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
