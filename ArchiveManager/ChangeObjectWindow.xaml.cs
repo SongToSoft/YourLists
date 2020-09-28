@@ -38,8 +38,26 @@ namespace ArchiveManager
                 ChangeObjectReleaseYear.Text = archiveObject.releaseYear.ToString();
             if (archiveObject.genre != "")
                 ChangeObjectGenre.Text = archiveObject.genre;
-            if (archiveObject.creator != "")
-                ChangeObjectCreator.Text = archiveObject.creator;
+            if (archiveObject.type != ECollectionType.ANIME)
+            {
+                if (archiveObject.creator != "")
+                    ChangeObjectCreator.Text = archiveObject.creator;
+            }
+            else
+            {
+                ChangeObjectCreator.Visibility = Visibility.Hidden;
+            }
+            if (archiveObject.type == ECollectionType.GAME)
+            {
+                ChangeObjectPlatform.Visibility = Visibility.Visible;
+                if (archiveObject.platform != "")
+                    ChangeObjectPlatform.Text = archiveObject.platform;
+            }
+            else
+            {
+                ChangeObjectPlatform.Visibility = Visibility.Hidden;
+            }
+            ChangeObjectIsCompleted.IsChecked = archiveObject.isCompleted;
         }
 
         public void ChangeObjectButton_Click(object sender, RoutedEventArgs e)
@@ -109,6 +127,7 @@ namespace ArchiveManager
                     Close();
                     break;
                 case ECollectionType.GAME:
+                    changeObject.platform = ChangeObjectPlatform.Text;
                     StaticContent.gameCollection.RemoveObject(selectedArchiveObject);
                     StaticContent.gameCollection.AddObject(changeObject);
 

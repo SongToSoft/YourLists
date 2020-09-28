@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArchiveManager.Objects
 {
@@ -20,7 +16,7 @@ namespace ArchiveManager.Objects
     {
         [DataMember]
         private List<ArchiveObject> archiveObjects;
-        private string fileName;
+        private string dataBasePath;
 
         public ArchiveCollection(ECollectionType collectionType)
         {
@@ -28,22 +24,22 @@ namespace ArchiveManager.Objects
             switch (collectionType)
             {
                 case ECollectionType.ANIME:
-                    fileName = "DataBase/anime.json";
+                    dataBasePath = "DataBase/animes.json";
                     break;
                 case ECollectionType.BOOK:
-                    fileName = "DataBase/book.json";
+                    dataBasePath = "DataBase/books.json";
                     break;
                 case ECollectionType.FILM:
-                    fileName = "DataBase/film.json";
+                    dataBasePath = "DataBase/films.json";
                     break;
                 case ECollectionType.GAME:
-                    fileName = "DataBase/game.json";
+                    dataBasePath = "DataBase/games.json";
                     break;
                 default:
-                    fileName = "DataBase/anime.json";
+                    dataBasePath = "DataBase/animes.json";
                     break;
             }
-            var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(fileName);
+            var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(dataBasePath);
             archiveObjects = collection.GetArchiveObjects();
         }
 
@@ -55,18 +51,18 @@ namespace ArchiveManager.Objects
         public void AddObject(ArchiveObject newObject)
         {
             archiveObjects.Add(newObject);
-            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this);
         }
 
         public void RemoveObject(ArchiveObject removableObject)
         {
             archiveObjects.Remove(removableObject);
-            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this, System.IO.FileMode.CreateNew);
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this, System.IO.FileMode.CreateNew);
         }
 
         public void SaveArchiveObjects()
         {
-            SerializationJsonSystem.SaveValue<ArchiveCollection>(fileName, this);
+            SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this);
         }
 
         public bool IsContain(string name)

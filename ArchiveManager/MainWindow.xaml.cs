@@ -18,7 +18,7 @@ namespace ArchiveManager
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+      public MainWindow()
         {
             InitializeComponent();
 
@@ -159,6 +159,7 @@ namespace ArchiveManager
                     case "Game":
                         if (!StaticContent.gameCollection.IsContain(name))
                         {
+                            newObject.platform = AddObjectPlatform.Text;
                             newObject.type = ECollectionType.GAME;
                             StaticContent.gameCollection.AddObject(newObject);
                             MessageBox.Show(selectedItem.Text + ": " + name + " was added");
@@ -171,6 +172,7 @@ namespace ArchiveManager
                         break;
                 }
             }
+            ClearField();
         }
 
         private void DeleteAnimeObjectButton_Click(object sender, RoutedEventArgs e)
@@ -255,6 +257,35 @@ namespace ArchiveManager
                 changeObjectWindow.SetValuesInFields(selectedItem);
                 changeObjectWindow.Show();
             }
+        }
+
+        private void AddObjectType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)AddObjectType;
+            var selectedItem = (TextBlock)comboBox.SelectedItem;
+            if (selectedItem != null)
+            {
+                if (selectedItem.Text == "Game")
+                {
+                    AddObjectPlatform.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    AddObjectPlatform.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        private void ClearField()
+        {
+            AddObjectName.Text = "Name";
+            AddObjectScore.Text = "Score";
+            AddObjectGenre.Text = "Genre";
+            AddObjectCreator.Text = "Creator";
+            AddObjectTimeForComplete.Text = "Time For Complete";
+            AddObjectReleaseYear.Text = "Release Year";
+            AddObjectPlatform.Text = "Platform";
+            AddObjectIsCompleted.IsChecked = false;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArchiveManager"
         mc:Ignorable="d"
-        Title="ArchiveManager" Height="450" Width="800">
+        Title="ArchiveManager" Height="450" Width="1200">
     <Grid>
         <TabControl>
             <TabItem Header="Animes">
@@ -22,14 +22,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Image Width="30" Source="{Binding photo}"/>
+                                            <Image Width="100" Height="100" Source="{Binding image}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="70" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
@@ -50,14 +50,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Image Width="30" Source="{Binding photo}"/>
+                                            <Image Width="100" Height="100" Source="{Binding image}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="170" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="70" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
@@ -79,14 +79,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Image Width="30" Source="{Binding photo}"/>
+                                            <Image Width="100" Height="100" Source="{Binding image}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="70" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
@@ -108,14 +108,15 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <Image Width="30" Source="{Binding photo}"/>
+                                            <Image Width="100" Height="100" Source="{Binding image}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="50" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="70" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn Header="Platform" Width="100" DisplayMemberBinding="{Binding platform}"/>
+                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
@@ -125,19 +126,20 @@
             </TabItem>
             <TabItem Header="Add New Object">
                 <Canvas>
-                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="48" Canvas.Top="50" Width="201">
+                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="48" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged">
                         <TextBlock>Anime</TextBlock>
                         <TextBlock>Book</TextBlock>
                         <TextBlock>Film</TextBlock>
                         <TextBlock>Game</TextBlock>
                     </ComboBox>
-                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="366" Canvas.Top="50" Width="75" Height="24" Click="AddObjectButton_Click"/>
-                    <TextBox Name="AddObjectName" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="90" Width="200"/>
-                    <TextBox Name="AddObjectScore" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Score" Canvas.Top="130" Width="200"/>
-                    <TextBox Name="AddObjectGenre" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Genre" Canvas.Top="170" Width="200"/>
-                    <TextBox Name="AddObjectCreator" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Creator" Canvas.Top="210" Width="200"/>
-                    <TextBox Name="AddObjectTimeForComplete" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Time For Complete" Canvas.Top="250" Width="200"/>
-                    <TextBox Name="AddObjectReleaseYear" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Release Year" Canvas.Top="290" Width="200"/>
+                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="641" Canvas.Top="50" Width="75" Height="24" Click="AddObjectButton_Click"/>
+                    <TextBox Name="AddObjectName" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="90" Width="500"/>
+                    <TextBox Name="AddObjectScore" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Score" Canvas.Top="130" Width="350"/>
+                    <TextBox Name="AddObjectGenre" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Genre" Canvas.Top="170" Width="350"/>
+                    <TextBox Name="AddObjectCreator" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Creator" Canvas.Top="210" Width="350"/>
+                    <TextBox Name="AddObjectTimeForComplete" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Time For Complete" Canvas.Top="250" Width="350"/>
+                    <TextBox Name="AddObjectReleaseYear" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Release Year" Canvas.Top="290" Width="350"/>
+                    <TextBox Name="AddObjectPlatform" Height="23" Canvas.Left="426" TextWrapping="Wrap" Text="Platform" Canvas.Top="290" Width="350" Visibility="Hidden"/>
                     <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="48" Canvas.Top="330"/>
                 </Canvas>
             </TabItem>

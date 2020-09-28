@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace ArchiveManager.Objects
 {
     [DataContract]
     public class ArchiveObject
     {
+        //[DataMember]
+        //public string imagePath;
         [DataMember]
         public string name { get; set; }
         [DataMember]
@@ -26,8 +30,12 @@ namespace ArchiveManager.Objects
         public string creator { get; set; }
         [DataMember]
         public ECollectionType type { get; set; }
-
-        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME)
+        [DataMember]
+        public string platform { get; set; }
+        //public BitmapImage image { get; set; }
+        [DataMember]
+        public string image { get; set; }
+        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME, string _platform = "")
         {
             name = _name;
             score = _score;
@@ -37,6 +45,9 @@ namespace ArchiveManager.Objects
             genre = _genre;
             creator = _creator;
             type = _type;
+            platform = _platform;
+            string currentDirectory = Directory.GetCurrentDirectory();
+            image = Path.GetFullPath(currentDirectory + "/DataBase/Images/question icon.png");dasdsd
         }
     }
 }
