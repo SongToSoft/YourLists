@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 
 namespace ArchiveManager.Objects
@@ -17,6 +18,7 @@ namespace ArchiveManager.Objects
         [DataMember]
         private List<ArchiveObject> archiveObjects;
         private string dataBasePath;
+        private string imagesPath;
 
         public ArchiveCollection(ECollectionType collectionType)
         {
@@ -25,18 +27,23 @@ namespace ArchiveManager.Objects
             {
                 case ECollectionType.ANIME:
                     dataBasePath = "DataBase/animes.json";
+                    imagesPath = "/DataBase/Images/Animes/";
                     break;
                 case ECollectionType.BOOK:
                     dataBasePath = "DataBase/books.json";
+                    imagesPath = "/DataBase/Images/Books/";
                     break;
                 case ECollectionType.FILM:
                     dataBasePath = "DataBase/films.json";
+                    imagesPath = "/DataBase/Images/Films/";
                     break;
                 case ECollectionType.GAME:
                     dataBasePath = "DataBase/games.json";
+                    imagesPath = "/DataBase/Images/Games/";
                     break;
                 default:
-                    dataBasePath = "DataBase/animes.json";
+                    //dataBasePath = "DataBase/animes.json";
+                    //imagesPath = "DataBase/Images/Games/";
                     break;
             }
             var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(dataBasePath);
@@ -48,8 +55,19 @@ namespace ArchiveManager.Objects
             return archiveObjects;
         }
 
-        public void AddObject(ArchiveObject newObject)
+        public void AddObject(ArchiveObject newObject, string objectImage = "")
         {
+            string destFileNameImage = "";
+            if (objectImage != null && objectImage != "")
+            {
+                destFileNameImage = Directory.GetCurrentDirectory() + imagesPath + newObject.name + ".jpg";
+                if (File.Exists(destFileNameImage))
+                {
+                    File.Delete(destFileNameImage);
+                }
+                newObject.SetImagePath(destFileNameImage);
+                File.Copy(objectImage, destFileNameImage);
+            }
             archiveObjects.Add(newObject);
             SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this);
         }

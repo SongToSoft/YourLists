@@ -1,4 +1,5 @@
 ﻿using ArchiveManager.Objects;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,11 @@ namespace ArchiveManager
 {
     public partial class MainWindow : Window
     {
-      public MainWindow()
+        private string objectImage = "";
+
+        public MainWindow()
         {
             InitializeComponent();
-
             LoadAnimeList();
             LoadBookList();
             LoadFilmList();
@@ -121,7 +123,7 @@ namespace ArchiveManager
                         if (!StaticContent.animeCollection.IsContain(name))
                         {
                             newObject.type = ECollectionType.ANIME;
-                            StaticContent.animeCollection.AddObject(newObject);
+                            StaticContent.animeCollection.AddObject(newObject, objectImage);
                             MessageBox.Show(selectedItem.Text + ": " + name + " was added");
                             AnimeListView.Items.Add(newObject);
                         }
@@ -134,7 +136,7 @@ namespace ArchiveManager
                         if (!StaticContent.bookCollection.IsContain(name))
                         {
                             newObject.type = ECollectionType.BOOK;
-                            StaticContent.bookCollection.AddObject(newObject);
+                            StaticContent.bookCollection.AddObject(newObject, objectImage);
                             MessageBox.Show(selectedItem.Text + ": " + name + " was added");
                             BookListView.Items.Add(newObject);
                         }
@@ -147,7 +149,7 @@ namespace ArchiveManager
                         if (!StaticContent.filmCollection.IsContain(name))
                         {
                             newObject.type = ECollectionType.FILM;
-                            StaticContent.filmCollection.AddObject(newObject);
+                            StaticContent.filmCollection.AddObject(newObject, objectImage);
                             MessageBox.Show(selectedItem.Text + ": " + name + " was added");
                             FilmListView.Items.Add(newObject);
                         }
@@ -161,7 +163,7 @@ namespace ArchiveManager
                         {
                             newObject.platform = AddObjectPlatform.Text;
                             newObject.type = ECollectionType.GAME;
-                            StaticContent.gameCollection.AddObject(newObject);
+                            StaticContent.gameCollection.AddObject(newObject, objectImage);
                             MessageBox.Show(selectedItem.Text + ": " + name + " was added");
                             GameListView.Items.Add(newObject);
                         }
@@ -286,6 +288,20 @@ namespace ArchiveManager
             AddObjectReleaseYear.Text = "Release Year";
             AddObjectPlatform.Text = "Platform";
             AddObjectIsCompleted.IsChecked = false;
+            objectImage = "";
+        }
+
+        private void AddObjectImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                objectImage = op.FileName;
+            }
         }
     }
 }

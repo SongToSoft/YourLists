@@ -1,6 +1,8 @@
 ﻿using ArchiveManager.Objects;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,8 @@ namespace ArchiveManager
     public partial class ChangeObjectWindow : Window
     {
         private ArchiveObject selectedArchiveObject;
+        private string objectImage = "";
+
         public ChangeObjectWindow()
         {
             InitializeComponent();
@@ -58,6 +62,10 @@ namespace ArchiveManager
                 ChangeObjectPlatform.Visibility = Visibility.Hidden;
             }
             ChangeObjectIsCompleted.IsChecked = archiveObject.isCompleted;
+            if (File.Exists(archiveObject.image))
+            {
+                objectImage = archiveObject.image;
+            }
         }
 
         public void ChangeObjectButton_Click(object sender, RoutedEventArgs e)
@@ -100,42 +108,55 @@ namespace ArchiveManager
             switch (type)
             {
                 case ECollectionType.ANIME:
+                    StaticContent.animeCollection.AddObject(changeObject, objectImage);
                     StaticContent.animeCollection.RemoveObject(selectedArchiveObject);
-                    StaticContent.animeCollection.AddObject(changeObject);
 
-                    StaticContent.animeListView.Items.Remove(StaticContent.animeListView.SelectedItem);
                     StaticContent.animeListView.Items.Add(changeObject);
+                    StaticContent.animeListView.Items.Remove(StaticContent.animeListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.BOOK:
+                    StaticContent.bookCollection.AddObject(changeObject, objectImage);
                     StaticContent.bookCollection.RemoveObject(selectedArchiveObject);
-                    StaticContent.bookCollection.AddObject(changeObject);
 
-                    StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
                     StaticContent.bookListView.Items.Add(changeObject);
+                    StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.FILM:
+                    StaticContent.filmCollection.AddObject(changeObject, objectImage);
                     StaticContent.filmCollection.RemoveObject(selectedArchiveObject);
-                    StaticContent.filmCollection.AddObject(changeObject);
 
-                    StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
                     StaticContent.filmListView.Items.Add(changeObject);
+                    StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.GAME:
                     changeObject.platform = ChangeObjectPlatform.Text;
+                    StaticContent.gameCollection.AddObject(changeObject, objectImage);
                     StaticContent.gameCollection.RemoveObject(selectedArchiveObject);
-                    StaticContent.gameCollection.AddObject(changeObject);
 
-                    StaticContent.gameListView.Items.Remove(StaticContent.gameListView.SelectedItem);
                     StaticContent.gameListView.Items.Add(changeObject);
+                    StaticContent.gameListView.Items.Remove(StaticContent.gameListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
+            }
+        }
+
+        private void ChangeObjectImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                objectImage = op.FileName;
             }
         }
     }

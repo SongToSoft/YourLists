@@ -12,8 +12,6 @@ namespace ArchiveManager.Objects
     [DataContract]
     public class ArchiveObject
     {
-        //[DataMember]
-        //public string imagePath;
         [DataMember]
         public string name { get; set; }
         [DataMember]
@@ -32,9 +30,9 @@ namespace ArchiveManager.Objects
         public ECollectionType type { get; set; }
         [DataMember]
         public string platform { get; set; }
-        //public BitmapImage image { get; set; }
         [DataMember]
         public string image { get; set; }
+
         public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME, string _platform = "")
         {
             name = _name;
@@ -46,8 +44,15 @@ namespace ArchiveManager.Objects
             creator = _creator;
             type = _type;
             platform = _platform;
-            string currentDirectory = Directory.GetCurrentDirectory();
-            image = Path.GetFullPath(currentDirectory + "/DataBase/Images/question icon.png");dasdsd
+            image = Path.GetFullPath((Directory.GetCurrentDirectory() + @"\DataBase\Images\question_icon.png").ToString());
+        }
+
+        public void SetImagePath(string imagePath = "")
+        {
+            if (imagePath != "")
+            {
+                image = imagePath;
+            }
         }
     }
 }
