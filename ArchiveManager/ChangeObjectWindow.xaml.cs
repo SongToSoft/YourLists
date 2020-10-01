@@ -44,27 +44,40 @@ namespace ArchiveManager
                 ChangeObjectGenre.Text = archiveObject.genre;
             if (archiveObject.type != ECollectionType.ANIME)
             {
+                ChangeObjectCreatorLabel.Visibility = Visibility.Visible;
+                ChangeObjectCreator.Visibility = Visibility.Visible;
                 if (archiveObject.creator != "")
                     ChangeObjectCreator.Text = archiveObject.creator;
             }
             else
             {
+                ChangeObjectCreatorLabel.Visibility = Visibility.Hidden;
                 ChangeObjectCreator.Visibility = Visibility.Hidden;
             }
             if (archiveObject.type == ECollectionType.GAME)
             {
                 ChangeObjectPlatform.Visibility = Visibility.Visible;
+                ChangeObjectPlatformLabel.Visibility = Visibility.Visible;
                 if (archiveObject.platform != "")
                     ChangeObjectPlatform.Text = archiveObject.platform;
             }
             else
             {
                 ChangeObjectPlatform.Visibility = Visibility.Hidden;
+                ChangeObjectPlatformLabel.Visibility = Visibility.Hidden;
             }
             ChangeObjectIsCompleted.IsChecked = archiveObject.isCompleted;
             if (File.Exists(archiveObject.image))
             {
                 objectImage = archiveObject.image;
+                if (!archiveObject.image.Contains(@"\DataBase\Images\question_icon.png"))
+                {
+                    ChangeObjectImageLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ChangeObjectImageLabel.Visibility = Visibility.Hidden;
+                }
             }
         }
 
@@ -157,6 +170,7 @@ namespace ArchiveManager
             if (op.ShowDialog() == true)
             {
                 objectImage = op.FileName;
+                ChangeObjectImageLabel.Visibility = Visibility.Visible;
             }
         }
     }

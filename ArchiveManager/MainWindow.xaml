@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArchiveManager"
         mc:Ignorable="d"
-        Title="ArchiveManager" Height="450" Width="1200">
+        Title="ArchiveManager" Height="500" Width="1200">
     <Grid>
-        <TabControl>
-            <TabItem Header="Animes">
+        <TabControl Margin="0,25,0,0">
+            <TabItem Name="AnimesTabItem" Header="Animes">
                 <ListView Name="AnimeListView" Margin="0,0,-5,-3">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -36,7 +36,7 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Header="Books">
+            <TabItem Name="BooksTabItem" Header="Books">
                 <ListView Name="BookListView" Margin="0,0,-5,-3">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -65,7 +65,7 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Header="Films">
+            <TabItem Name="FilmsTabItem" Header="Films">
                 <ListView Name="FilmListView" Margin="0,0,-5,-3">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -94,7 +94,7 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Header="Games">
+            <TabItem Name="GamesTabItem" Header="Games">
                 <ListView Name="GameListView" Margin="0,0,-5,-3">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -124,26 +124,45 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Header="Add New Object">
+            <TabItem Name="AddObjectTabItem" Header="Add New Object">
                 <Canvas>
-                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="48" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged">
+                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="150" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged">
                         <TextBlock>Anime</TextBlock>
                         <TextBlock>Book</TextBlock>
                         <TextBlock>Film</TextBlock>
                         <TextBlock>Game</TextBlock>
                     </ComboBox>
-                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="640" Canvas.Top="50" Width="75" Height="24" Click="AddObjectButton_Click"/>
-                    <Button Name="AddObjectImageButton" Content="Load Image" Canvas.Left="640" Canvas.Top="100" Width="75" Height="24" Click="AddObjectImageButton_Click"/>
-                    <TextBox Name="AddObjectName" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Name" Canvas.Top="90" Width="500"/>
-                    <TextBox Name="AddObjectScore" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Score" Canvas.Top="130" Width="350"/>
-                    <TextBox Name="AddObjectGenre" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Genre" Canvas.Top="170" Width="350"/>
-                    <TextBox Name="AddObjectCreator" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Creator" Canvas.Top="210" Width="350"/>
-                    <TextBox Name="AddObjectTimeForComplete" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Time For Complete" Canvas.Top="250" Width="350"/>
-                    <TextBox Name="AddObjectReleaseYear" Height="23" Canvas.Left="48" TextWrapping="Wrap" Text="Release Year" Canvas.Top="290" Width="350"/>
-                    <TextBox Name="AddObjectPlatform" Height="23" Canvas.Left="426" TextWrapping="Wrap" Text="Platform" Canvas.Top="290" Width="350" Visibility="Hidden"/>
-                    <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="48" Canvas.Top="330"/>
+                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="700" Canvas.Top="90" Width="75" Height="25" Click="AddObjectButton_Click"/>
+                    <Button Name="AddObjectImageButton" Content="Load Image" Canvas.Left="700" Canvas.Top="130" Width="75" Height="25" Click="AddObjectImageButton_Click"/>
+                    <TextBox Name="AddObjectName" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="500"/>
+                    <TextBox Name="AddObjectScore" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350"/>
+                    <TextBox Name="AddObjectGenre" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350"/>
+                    <TextBox Name="AddObjectTimeForComplete" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350"/>
+                    <TextBox Name="AddObjectReleaseYear" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350"/>
+                    <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="150" Canvas.Top="290"/>
+                    <TextBox Name="AddObjectCreator" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350" Visibility="Hidden"/>
+                    <TextBox Name="AddObjectPlatform" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350" Visibility="Hidden"/>
+                    <Label Content="Select Type" Canvas.Left="40" Canvas.Top="50"/>
+                    <Label Content="Name" Canvas.Left="40" Canvas.Top="90"/>
+                    <Label Content="Score" Canvas.Left="40" Canvas.Top="130"/>
+                    <Label Content="Genre" Canvas.Left="40" Canvas.Top="170"/>
+                    <Label Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
+                    <Label Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
+                    <Label Name="AddObjectPlatformLabel" Content="Platform" Canvas.Left="620" Canvas.Top="250" Visibility="Hidden"/>
+                    <Label Name="AddObjectCreatorLabel" Content="Creator" Canvas.Left="620" Canvas.Top="209" Visibility="Hidden"/>
+                    <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="582" Canvas.Top="130" Width="113" Visibility="Hidden"/>
                 </Canvas>
             </TabItem>
         </TabControl>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File" Height="25" Width="35">
+                <MenuItem Header="Chose Language" >
+                    <MenuItem Header="English" Click="MenuItem_ChoseEnglistLanguage"></MenuItem>
+                    <MenuItem Header="Russian" Click="MenuItem_ChoseRussianLanguage"></MenuItem>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItem_Exit"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

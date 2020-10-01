@@ -267,28 +267,41 @@ namespace ArchiveManager
             var selectedItem = (TextBlock)comboBox.SelectedItem;
             if (selectedItem != null)
             {
-                if (selectedItem.Text == "Game")
+                if (selectedItem.Text != "Anime")
                 {
-                    AddObjectPlatform.Visibility = Visibility.Visible;
+                    AddObjectCreator.Visibility = Visibility.Visible;
+                    AddObjectCreatorLabel.Visibility = Visibility.Visible;
+                    if (selectedItem.Text == "Game")
+                    {
+                        AddObjectPlatform.Visibility = Visibility.Visible;
+                        AddObjectPlatformLabel.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        AddObjectPlatform.Visibility = Visibility.Hidden;
+                        AddObjectPlatformLabel.Visibility = Visibility.Hidden;
+                    }
                 }
                 else
                 {
-                    AddObjectPlatform.Visibility = Visibility.Hidden;
+                    AddObjectCreator.Visibility = Visibility.Hidden;
+                    AddObjectCreatorLabel.Visibility = Visibility.Hidden;
                 }
             }
         }
 
         private void ClearField()
         {
-            AddObjectName.Text = "Name";
-            AddObjectScore.Text = "Score";
-            AddObjectGenre.Text = "Genre";
-            AddObjectCreator.Text = "Creator";
-            AddObjectTimeForComplete.Text = "Time For Complete";
-            AddObjectReleaseYear.Text = "Release Year";
-            AddObjectPlatform.Text = "Platform";
+            AddObjectName.Text = "";
+            AddObjectScore.Text = "";
+            AddObjectGenre.Text = "";
+            AddObjectCreator.Text = "";
+            AddObjectTimeForComplete.Text = "";
+            AddObjectReleaseYear.Text = "";
+            AddObjectPlatform.Text = "";
             AddObjectIsCompleted.IsChecked = false;
             objectImage = "";
+            AddObjectImageLabel.Visibility = Visibility.Hidden;
         }
 
         private void AddObjectImageButton_Click(object sender, RoutedEventArgs e)
@@ -301,7 +314,31 @@ namespace ArchiveManager
             if (op.ShowDialog() == true)
             {
                 objectImage = op.FileName;
+                AddObjectImageLabel.Visibility = Visibility.Visible;
             }
+        }
+
+        private void MenuItem_Exit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuItem_ChoseRussianLanguage(object sender, RoutedEventArgs e)
+        {
+            AnimesTabItem.Header = "Аниме";
+            BooksTabItem.Header = "Книги";
+            FilmsTabItem.Header = "Фильмы";
+            GamesTabItem.Header = "Игры";
+            AddObjectTabItem.Header = "Добавить новый предмет";
+        }
+
+        private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
+        {
+            AnimesTabItem.Header = "Animes";
+            BooksTabItem.Header = "Books";
+            FilmsTabItem.Header = "Films";
+            GamesTabItem.Header = "Games";
+            AddObjectTabItem.Header = "Add New Object";
         }
     }
 }

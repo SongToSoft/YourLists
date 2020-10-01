@@ -7,15 +7,23 @@
         mc:Ignorable="d"
         Title="Change Object" Height="550" Width="700">
     <Canvas>
-        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="480" Canvas.Top="100" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5"/>
-        <Button Name="AddObjectImageButton" Content="Load Image" Canvas.Left="480" Canvas.Top="147" Width="75" Height="24" Click="ChangeObjectImageButton_Click"/>
-        <TextBox Name="ChangeObjectName" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Name" Canvas.Top="50" Width="500"/>
-        <TextBox Name="ChangeObjectScore" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Score" Canvas.Top="100" Width="350"/>
-        <TextBox Name="ChangeObjectGenre" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Genre" Canvas.Top="150" Width="350"/>
-        <TextBox Name="ChangeObjectCreator" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Creator" Canvas.Top="200" Width="350"/>
-        <TextBox Name="ChangeObjectTimeForComplete" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Time For Complete" Canvas.Top="250" Width="350"/>
-        <TextBox Name="ChangeObjectReleaseYear" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Release Year" Canvas.Top="300" Width="350"/>
-        <CheckBox Name="ChangeObjectIsCompleted" Content="Is Completed" Canvas.Left="48" Canvas.Top="350"/>
-        <TextBox Name="ChangeObjectPlatform" Height="23" Canvas.Left="50" TextWrapping="Wrap" Text="Platform" Canvas.Top="400" Width="350" Visibility="Hidden"/>
+        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="160" Canvas.Top="420" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5"/>
+        <Button Name="AddObjectImageButton" Content="Load Image" Canvas.Left="160" Canvas.Top="370" Width="75" Height="24" Click="ChangeObjectImageButton_Click"/>
+        <TextBox Name="ChangeObjectName" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="50" Width="500"/>
+        <TextBox Name="ChangeObjectScore" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="350"/>
+        <TextBox Name="ChangeObjectGenre" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350"/>
+        <TextBox Name="ChangeObjectCreator" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350"/>
+        <TextBox Name="ChangeObjectTimeForComplete" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350"/>
+        <TextBox Name="ChangeObjectReleaseYear" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350"/>
+        <TextBox Name="ChangeObjectPlatform" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="290" Width="350" />
+        <CheckBox Name="ChangeObjectIsCompleted" Content="Is Completed" Canvas.Left="156" Canvas.Top="330"/>
+        <Label Content="Name" Canvas.Left="40" Canvas.Top="50"/>
+        <Label Content="Score" Canvas.Left="40" Canvas.Top="90"/>
+        <Label Content="Genre" Canvas.Left="40" Canvas.Top="130"/>
+        <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="40" Canvas.Top="170"/>
+        <Label Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
+        <Label Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
+        <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="40" Canvas.Top="290"/>
+        <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="250" Canvas.Top="370" Width="115"/>
     </Canvas>
 </Window>

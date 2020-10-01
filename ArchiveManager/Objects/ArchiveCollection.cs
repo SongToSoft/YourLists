@@ -61,12 +61,11 @@ namespace ArchiveManager.Objects
             if (objectImage != null && objectImage != "")
             {
                 destFileNameImage = Directory.GetCurrentDirectory() + imagesPath + newObject.name + ".jpg";
-                if (File.Exists(destFileNameImage))
+                if (!File.Exists(destFileNameImage))
                 {
-                    File.Delete(destFileNameImage);
+                    File.Copy(objectImage, destFileNameImage);
                 }
                 newObject.SetImagePath(destFileNameImage);
-                File.Copy(objectImage, destFileNameImage);
             }
             archiveObjects.Add(newObject);
             SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this);
