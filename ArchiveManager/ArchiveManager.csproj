@@ -56,17 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChangeObjectWindow.xaml.cs">
+    <Compile Include="Windows\ChangeObjectWindow.xaml.cs">
       <DependentUpon>ChangeObjectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Objects\ArchiveCollection.cs" />
     <Compile Include="SerializationJsonSystem.cs" />
     <Compile Include="StaticContent.cs" />
-    <Page Include="ChangeObjectWindow.xaml">
+    <Compile Include="Windows\ShowObjectWindow.xaml.cs">
+      <DependentUpon>ShowObjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\ChangeObjectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -75,10 +78,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Objects\ArchiveObject.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\ShowObjectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

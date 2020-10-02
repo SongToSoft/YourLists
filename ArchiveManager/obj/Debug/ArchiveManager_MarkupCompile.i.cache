@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\App.xaml
-2-1706594564
+3-104448507
 
-11-648887019
+12-1188701028
 14-1317975792
-ChangeObjectWindow.xaml;MainWindow.xaml;
+Windows\ChangeObjectWindow.xaml;Windows\MainWindow.xaml;Windows\ShowObjectWindow.xaml;
 
-True
+False
 

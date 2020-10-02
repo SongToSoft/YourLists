@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ArchiveManager
+namespace ArchiveManager.Windows
 {
     public partial class MainWindow : Window
     {
@@ -339,6 +339,16 @@ namespace ArchiveManager
             FilmsTabItem.Header = "Films";
             GamesTabItem.Header = "Games";
             AddObjectTabItem.Header = "Add New Object";
+        }
+
+        void AnimeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+            }
         }
     }
 }

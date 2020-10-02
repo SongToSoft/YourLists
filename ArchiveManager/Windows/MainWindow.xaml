@@ -1,4 +1,4 @@
-﻿<Window x:Class="ArchiveManager.MainWindow"
+﻿<Window x:Class="ArchiveManager.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,7 +9,7 @@
     <Grid>
         <TabControl Margin="0,25,0,0">
             <TabItem Name="AnimesTabItem" Header="Animes">
-                <ListView Name="AnimeListView" Margin="0,0,-5,-3">
+                <ListView Name="AnimeListView" Margin="0,0,-5,-3" MouseDoubleClick="AnimeListView_MouseDoubleClick">
                     <ListView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Delete" Click="DeleteAnimeObjectButton_Click"/>

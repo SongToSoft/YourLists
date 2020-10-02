@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ArchiveManager
+namespace ArchiveManager.Windows
 {
     public partial class ChangeObjectWindow : Window
     {

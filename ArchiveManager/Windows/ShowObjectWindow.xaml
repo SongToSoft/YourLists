@@ -1,0 +1,28 @@
+﻿<Window x:Class="ArchiveManager.Windows.ShowObjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArchiveManager.Windows"
+        mc:Ignorable="d"
+        Title="ShowObjectWindow" Height="450" Width="800">
+    <Grid>
+        <Image Name="ShowObjectImage" HorizontalAlignment="Left" Height="180" Margin="36,28,0,0" VerticalAlignment="Top" Width="182"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="246,40,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectNameText" Content="Name" HorizontalAlignment="Left" Margin="319,40,0,0" VerticalAlignment="Top"/>
+        <Label Content="Score" HorizontalAlignment="Left" Margin="246,80,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectScoreText" Content="Score" HorizontalAlignment="Left" Margin="319,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Genre" HorizontalAlignment="Left" Margin="246,120,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectGenreText" Content="Genre" HorizontalAlignment="Left" Margin="319,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="Creator" HorizontalAlignment="Left" Margin="246,160,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectCreatorText" Content="Creator" HorizontalAlignment="Left" Margin="319,160,0,0" VerticalAlignment="Top"/>
+        <Label Content="Time For Complete" HorizontalAlignment="Left" Margin="246,200,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectTimeForCompleteText" Content="Time For Complete" HorizontalAlignment="Left" Margin="372,200,0,0" VerticalAlignment="Top"/>
+        <Label Content="Release Year" HorizontalAlignment="Left" Margin="246,240,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectReleaseYearText" Content="Release Year" HorizontalAlignment="Left" Margin="372,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="Platform" HorizontalAlignment="Left" Margin="246,280,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectPlatformText" Content="Platform" HorizontalAlignment="Left" Margin="372,280,0,0" VerticalAlignment="Top"/>
+        <Label Content="Is Complete" HorizontalAlignment="Left" Margin="246,320,0,0" VerticalAlignment="Top"/>
+        <Label Name="ShowObjectIsCompleteText" Content="Is Complete" HorizontalAlignment="Left" Margin="372,320,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
