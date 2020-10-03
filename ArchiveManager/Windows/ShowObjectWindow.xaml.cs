@@ -32,23 +32,28 @@ namespace ArchiveManager.Windows
             ShowObjectNameText.Content = archiveObject.name;
             ShowObjectScoreText.Content = archiveObject.score.ToString();
             ShowObjectGenreText.Content = archiveObject.genre;
+
             if (archiveObject.type != ECollectionType.ANIME)
             {
+                ShowObjectCreatorLabel.Visibility = Visibility.Visible;
                 ShowObjectCreatorText.Visibility = Visibility.Visible;
                 ShowObjectCreatorText.Content = archiveObject.creator;
-                if (archiveObject.type == ECollectionType.GAME)
-                {
-                    ShowObjectPlatformText.Visibility = Visibility.Visible;
-                    ShowObjectPlatformText.Content = archiveObject.platform;
-                }
-                else
-                {
-                    ShowObjectPlatformText.Visibility = Visibility.Hidden;
-                }
             }
             else
             {
+                ShowObjectCreatorLabel.Visibility = Visibility.Hidden;
                 ShowObjectCreatorText.Visibility = Visibility.Hidden;
+            }
+
+            if (archiveObject.type == ECollectionType.GAME)
+            {
+                ShowObjectPlatformText.Visibility = Visibility.Visible;
+                ShowObjectPlatformText.Content = archiveObject.platform;
+            }
+            else
+            {
+                ShowObjectPlatformLabel.Visibility = Visibility.Hidden;
+                ShowObjectPlatformText.Visibility = Visibility.Hidden;
             }
             ShowObjectTimeForCompleteText.Content = archiveObject.timeForComplete.ToString();
             ShowObjectReleaseYearText.Content = archiveObject.releaseYear.ToString();

@@ -330,6 +330,34 @@ namespace ArchiveManager.Windows
             FilmsTabItem.Header = "Фильмы";
             GamesTabItem.Header = "Игры";
             AddObjectTabItem.Header = "Добавить новый предмет";
+
+            AnimeGridImage.Header = "Изображение";
+            AnimeGridName.Header = "Название";
+            AnimeGridScore.Header = "Оценка";
+            AnimeGridGenre.Header = "Жанр";
+            AnimeGridReleaseYear.Header = "Год выпуска";
+            AnimeGridCompleted.Header = "Завершено";
+
+            BookGridImage.Header = "Изображение";
+            BookGridName.Header = "Название";
+            BookGridScore.Header = "Оценка";
+            BookGridGenre.Header = "Жанр";
+            BookGridReleaseYear.Header = "Год выпуска";
+            BookGridCompleted.Header = "Завершено";
+
+            FilmGridImage.Header = "Изображение";
+            FilmGridName.Header = "Название";
+            FilmGridScore.Header = "Оценка";
+            FilmGridGenre.Header = "Жанр";
+            FilmGridReleaseYear.Header = "Год выпуска";
+            FilmGridCompleted.Header = "Завершено";
+
+            GameGridImage.Header = "Изображение";
+            GameGridName.Header = "Название";
+            GameGridScore.Header = "Оценка";
+            GameGridGenre.Header = "Жанр";
+            GameGridReleaseYear.Header = "Год выпуска";
+            GameGridCompleted.Header = "Завершено";
         }
 
         private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
@@ -344,6 +372,36 @@ namespace ArchiveManager.Windows
         void AnimeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+            }
+        }
+
+        void BookListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = BookListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+            }
+        }
+
+        void FilmListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+            }
+        }
+
+        void GameListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = GameListView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
                 var showObjectWindow = new ShowObjectWindow(selectedItem);

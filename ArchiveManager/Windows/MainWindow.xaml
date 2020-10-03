@@ -18,7 +18,7 @@
                     </ListView.ContextMenu>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Image" Width="100">
+                            <GridViewColumn x:Name="AnimeGridImage" Header="Image" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
@@ -27,17 +27,17 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn x:Name="AnimeGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn x:Name="AnimeGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="AnimeGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="AnimeGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn x:Name="AnimeGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </TabItem>
             <TabItem Name="BooksTabItem" Header="Books">
-                <ListView Name="BookListView" Margin="0,0,-5,-3">
+                <ListView Name="BookListView" Margin="0,0,-5,-3" MouseDoubleClick="BookListView_MouseDoubleClick">
                     <ListView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Delete" Click="DeleteBookObjectButton_Click"/>
@@ -46,7 +46,7 @@
                     </ListView.ContextMenu>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Image" Width="100">
+                            <GridViewColumn x:Name="BookGridImage" Header="Image" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
@@ -66,7 +66,7 @@
                 </ListView>
             </TabItem>
             <TabItem Name="FilmsTabItem" Header="Films">
-                <ListView Name="FilmListView" Margin="0,0,-5,-3">
+                <ListView Name="FilmListView" Margin="0,0,-5,-3" MouseDoubleClick="FilmListView_MouseDoubleClick">
                     <ListView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Delete" Click="DeleteFilmObjectButton_Click"/>
@@ -75,7 +75,7 @@
                     </ListView.ContextMenu>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Image" Width="100">
+                            <GridViewColumn x:Name="FilmGridImage" Header="Image" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
@@ -95,7 +95,7 @@
                 </ListView>
             </TabItem>
             <TabItem Name="GamesTabItem" Header="Games">
-                <ListView Name="GameListView" Margin="0,0,-5,-3">
+                <ListView Name="GameListView" Margin="0,0,-5,-3" MouseDoubleClick="GameListView_MouseDoubleClick">
                     <ListView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Delete" Click="DeleteGameObjectButton_Click"/>
@@ -104,7 +104,7 @@
                     </ListView.ContextMenu>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Image" Width="100">
+                            <GridViewColumn x:Name="GameGridImage" Header="Image" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>

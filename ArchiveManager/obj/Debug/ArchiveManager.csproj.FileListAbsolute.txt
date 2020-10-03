@@ -15,3 +15,4 @@ C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\S
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\ChangeObjectWindow.baml
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\MainWindow.baml
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\ShowObjectWindow.baml
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.csprojAssemblyReference.cache
