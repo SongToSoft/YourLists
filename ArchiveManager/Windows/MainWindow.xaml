@@ -55,12 +55,12 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
-                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn x:Name="BookGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn x:Name="BookGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="BookGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="BookGridCreator" Header="Autor" Width="100" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="BookGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn x:Name="BookGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -84,12 +84,12 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
-                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn x:Name="FilmGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn x:Name="FilmGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="FilmGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="FilmGridCreator" Header="Director" Width="100" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="FilmGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn x:Name="FilmGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -113,13 +113,13 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn Header="Platform" Width="100" DisplayMemberBinding="{Binding platform}"/>
-                            <GridViewColumn Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn Header="Creator" Width="100" DisplayMemberBinding="{Binding creator}"/>
-                            <GridViewColumn Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
-                            <GridViewColumn Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
+                            <GridViewColumn x:Name="GameGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
+                            <GridViewColumn x:Name="GameGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="GameGridPlatform" Header="Platform" Width="120" DisplayMemberBinding="{Binding platform}"/>
+                            <GridViewColumn x:Name="GameGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="GameGridCreator" Header="Developer studio" Width="120" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="GameGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
+                            <GridViewColumn x:Name="GameGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -133,7 +133,7 @@
                         <TextBlock>Game</TextBlock>
                     </ComboBox>
                     <Button Name="AddObjectButton" Content="Add" Canvas.Left="700" Canvas.Top="90" Width="75" Height="25" Click="AddObjectButton_Click"/>
-                    <Button Name="AddObjectImageButton" Content="Load Image" Canvas.Left="700" Canvas.Top="130" Width="75" Height="25" Click="AddObjectImageButton_Click"/>
+                    <Button Name="AddObjectLoadImageButton" Content="Load Image" Canvas.Left="700" Canvas.Top="130" Width="75" Height="25" Click="AddObjectImageButton_Click"/>
                     <TextBox Name="AddObjectName" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="500"/>
                     <TextBox Name="AddObjectScore" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350"/>
                     <TextBox Name="AddObjectGenre" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350"/>
@@ -142,12 +142,12 @@
                     <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="150" Canvas.Top="290"/>
                     <TextBox Name="AddObjectCreator" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350" Visibility="Hidden"/>
                     <TextBox Name="AddObjectPlatform" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350" Visibility="Hidden"/>
-                    <Label Content="Select Type" Canvas.Left="40" Canvas.Top="50"/>
-                    <Label Content="Name" Canvas.Left="40" Canvas.Top="90"/>
-                    <Label Content="Score" Canvas.Left="40" Canvas.Top="130"/>
-                    <Label Content="Genre" Canvas.Left="40" Canvas.Top="170"/>
-                    <Label Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
-                    <Label Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
+                    <Label Name="AddObjectSelectTypeLabel" Content="Select Type" Canvas.Left="40" Canvas.Top="50"/>
+                    <Label Name="AddObjectNameLabel" Content="Name" Canvas.Left="40" Canvas.Top="90"/>
+                    <Label Name="AddObjectScoreLabel" Content="Score" Canvas.Left="40" Canvas.Top="130"/>
+                    <Label Name="AddObjectGenreLabel" Content="Genre" Canvas.Left="40" Canvas.Top="170"/>
+                    <Label Name="AddObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
+                    <Label Name="AddObjectReleaseYearLabel" Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
                     <Label Name="AddObjectPlatformLabel" Content="Platform" Canvas.Left="620" Canvas.Top="250" Visibility="Hidden"/>
                     <Label Name="AddObjectCreatorLabel" Content="Creator" Canvas.Left="620" Canvas.Top="209" Visibility="Hidden"/>
                     <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="582" Canvas.Top="130" Width="113" Visibility="Hidden"/>
@@ -155,13 +155,13 @@
             </TabItem>
         </TabControl>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="File" Height="25" Width="35">
-                <MenuItem Header="Chose Language" >
-                    <MenuItem Header="English" Click="MenuItem_ChoseEnglistLanguage"></MenuItem>
-                    <MenuItem Header="Russian" Click="MenuItem_ChoseRussianLanguage"></MenuItem>
+            <MenuItem Name="MenuItemFile" Header="File" Height="25" Width="40">
+                <MenuItem Name="MenuItemChoseLanguage" Header="Chose Language" >
+                    <MenuItem Name="MenuItemChoseLanguage_English" Header="English" Click="MenuItem_ChoseEnglistLanguage"></MenuItem>
+                    <MenuItem Name="MenuItemChoseLanguage_Russian" Header="Russian" Click="MenuItem_ChoseRussianLanguage"></MenuItem>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Exit" Click="MenuItem_Exit"></MenuItem>
+                <MenuItem Name="MenuItemExit" Header="Exit" Click="MenuItem_Exit"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

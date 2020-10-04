@@ -342,6 +342,7 @@ namespace ArchiveManager.Windows
             BookGridName.Header = "Название";
             BookGridScore.Header = "Оценка";
             BookGridGenre.Header = "Жанр";
+            BookGridCreator.Header = "Автор";
             BookGridReleaseYear.Header = "Год выпуска";
             BookGridCompleted.Header = "Завершено";
 
@@ -349,15 +350,36 @@ namespace ArchiveManager.Windows
             FilmGridName.Header = "Название";
             FilmGridScore.Header = "Оценка";
             FilmGridGenre.Header = "Жанр";
+            FilmGridCreator.Header = "Режиссёр";
             FilmGridReleaseYear.Header = "Год выпуска";
             FilmGridCompleted.Header = "Завершено";
 
             GameGridImage.Header = "Изображение";
             GameGridName.Header = "Название";
             GameGridScore.Header = "Оценка";
+            GameGridPlatform.Header = "Платформа";
             GameGridGenre.Header = "Жанр";
+            GameGridCreator.Header = "Студия разработчик";
             GameGridReleaseYear.Header = "Год выпуска";
             GameGridCompleted.Header = "Завершено";
+
+            MenuItemFile.Header = "Файл";
+            MenuItemChoseLanguage.Header = "Выбор языка";
+            MenuItemChoseLanguage_English.Header = "Английский";
+            MenuItemChoseLanguage_Russian.Header = "Русский";
+            MenuItemExit.Header = "Выход";
+
+            AddObjectSelectTypeLabel.Content = "Выберите тип";
+            AddObjectNameLabel.Content = "Название";
+            AddObjectScoreLabel.Content = "Оценка";
+            AddObjectGenreLabel.Content = "Жанр";
+            AddObjectTimeForCompleteLabel.Content = "Время на завершение";
+            AddObjectReleaseYearLabel.Content = "Дата выхода";
+            AddObjectPlatformLabel.Content = "Платформа";
+            AddObjectCreatorLabel.Content = "Автор";
+            AddObjectImageLabel.Content = "Изображение было выбрано";
+            AddObjectButton.Content = "Добавить";
+            AddObjectLoadImageButton.Content = "Выбрать изображение";
         }
 
         private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
