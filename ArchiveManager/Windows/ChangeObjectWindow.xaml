@@ -21,7 +21,7 @@
         <Label Content="Score" Canvas.Left="40" Canvas.Top="90"/>
         <Label Content="Genre" Canvas.Left="40" Canvas.Top="130"/>
         <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="40" Canvas.Top="170"/>
-        <Label Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
+        <Label Name="ChangeObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
         <Label Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
         <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="40" Canvas.Top="290"/>
         <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="250" Canvas.Top="370" Width="115"/>

@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Windows;
+using System.Drawing;
+using System;
 
 namespace ArchiveManager.Objects
 {
@@ -48,6 +51,7 @@ namespace ArchiveManager.Objects
             }
             var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(dataBasePath);
             archiveObjects = collection.GetArchiveObjects();
+            CheckImages();
         }
 
         public List<ArchiveObject> GetArchiveObjects()
@@ -58,12 +62,18 @@ namespace ArchiveManager.Objects
         public void AddObject(ArchiveObject newObject, string objectImage = "")
         {
             string destFileNameImage = "";
-            if (objectImage != null && objectImage != "")
+            if (File.Exists(objectImage) && objectImage != null && objectImage != "")
             {
                 destFileNameImage = Directory.GetCurrentDirectory() + imagesPath + newObject.name + ".jpg";
-                if (!File.Exists(destFileNameImage))
+                if (objectImage != destFileNameImage)
                 {
-                    File.Copy(objectImage, destFileNameImage);
+                    newObject.SetImagePath(Path.GetFullPath((Directory.GetCurrentDirectory() + @"\DataBase\Images\question_icon.png").ToString()));
+                    if (File.Exists(destFileNameImage))
+                    {
+                        var randomize = new Random();
+                        destFileNameImage = Directory.GetCurrentDirectory() + imagesPath + newObject.name + "_temporary_name_" + randomize.Next(0, int.MaxValue) + ".jpg";
+                    }
+                    File.Copy(objectImage, destFileNameImage, true);
                 }
                 newObject.SetImagePath(destFileNameImage);
             }
@@ -71,9 +81,45 @@ namespace ArchiveManager.Objects
             SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this);
         }
 
+        private void CheckImages()
+        {
+            bool needSave = false;
+            for (int i = 0; i < archiveObjects.Count; ++i)
+            {
+                if (archiveObjects[i].image.Contains("temporary_name"))
+                {
+                    string destFileNameImage = Directory.GetCurrentDirectory() + imagesPath + archiveObjects[i].name + ".jpg";
+                    if (File.Exists(destFileNameImage))
+                    {
+                        File.Delete(destFileNameImage);
+                    }
+                    File.Copy(archiveObjects[i].image, destFileNameImage);
+                    File.Delete(archiveObjects[i].image);
+                    archiveObjects[i].SetImagePath(destFileNameImage);
+                    needSave = true;
+                }
+                else
+                {
+                    if (archiveObjects[i].image == "" || !File.Exists(archiveObjects[i].image))
+                    {
+                        archiveObjects[i].SetImagePath(Path.GetFullPath((Directory.GetCurrentDirectory() + @"\DataBase\Images\question_icon.png").ToString()));
+                    }
+                }
+            }
+            //TODO:  Добавить удаление не используемых изображений
+            if (needSave)
+            {
+                SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this, System.IO.FileMode.CreateNew);
+            }
+        }
+
         public void RemoveObject(ArchiveObject removableObject)
         {
             archiveObjects.Remove(removableObject);
+            //if (removableObject.image != Path.GetFullPath((Directory.GetCurrentDirectory() + @"\DataBase\Images\question_icon.png").ToString()))
+            //{
+            //    File.Delete(removableObject.image);
+            //}
             SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this, System.IO.FileMode.CreateNew);
         }
 

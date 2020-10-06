@@ -15,7 +15,7 @@ namespace ArchiveManager.Objects
         [DataMember]
         public string name { get; set; }
         [DataMember]
-        public float score { get; set; }
+        public int score { get; set; }
         [DataMember]
         public float timeForComplete { get; set; }
         [DataMember]
@@ -33,7 +33,7 @@ namespace ArchiveManager.Objects
         [DataMember]
         public string image { get; set; }
 
-        public ArchiveObject(string _name = "name", float _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME, string _platform = "")
+        public ArchiveObject(string _name = "name", int _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME, string _platform = "")
         {
             name = _name;
             score = _score;

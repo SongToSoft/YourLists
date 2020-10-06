@@ -66,6 +66,11 @@ namespace ArchiveManager.Windows
                 ChangeObjectPlatform.Visibility = Visibility.Hidden;
                 ChangeObjectPlatformLabel.Visibility = Visibility.Hidden;
             }
+            if (archiveObject.type == ECollectionType.BOOK)
+            {
+                ChangeObjectTimeForComplete.Visibility = Visibility.Hidden;
+                ChangeObjectTimeForCompleteLabel.Visibility = Visibility.Hidden;
+            }
             ChangeObjectIsCompleted.IsChecked = archiveObject.isCompleted;
             if (File.Exists(archiveObject.image))
             {
@@ -84,14 +89,25 @@ namespace ArchiveManager.Windows
         public void ChangeObjectButton_Click(object sender, RoutedEventArgs e)
         {
             string name = ChangeObjectName.GetLineText(0);
-            float score = 0;
+            int score = 0;
             string genre = ChangeObjectGenre.GetLineText(0);
             string creator = ChangeObjectCreator.GetLineText(0);
             float timeForComplete = 0;
             int releaseYear = 0;
             try
             {
-                score = float.Parse(ChangeObjectScore.GetLineText(0));
+                score = int.Parse(ChangeObjectScore.GetLineText(0));
+                if (score > 100)
+                {
+                    score = 100;
+                }
+                else
+                {
+                    if (score < 0)
+                    {
+                        score = 0;
+                    }
+                }
             }
             catch (FormatException)
             {
@@ -121,39 +137,47 @@ namespace ArchiveManager.Windows
             switch (type)
             {
                 case ECollectionType.ANIME:
-                    StaticContent.animeCollection.AddObject(changeObject, objectImage);
-                    StaticContent.animeCollection.RemoveObject(selectedArchiveObject);
-
                     StaticContent.animeListView.Items.Add(changeObject);
                     StaticContent.animeListView.Items.Remove(StaticContent.animeListView.SelectedItem);
+                    //StaticContent.animeListView.Items.Refresh();
+
+                    StaticContent.animeCollection.AddObject(changeObject, objectImage);
+                    StaticContent.animeCollection.RemoveObject(selectedArchiveObject);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.BOOK:
+                    StaticContent.bookListView.Items.Add(changeObject);
+                    StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
+                    //StaticContent.bookListView.Items.Refresh();
+
                     StaticContent.bookCollection.AddObject(changeObject, objectImage);
                     StaticContent.bookCollection.RemoveObject(selectedArchiveObject);
 
-                    StaticContent.bookListView.Items.Add(changeObject);
-                    StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.FILM:
+                    StaticContent.filmListView.Items.Add(changeObject);
+                    StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
+                    //StaticContent.filmListView.Items.Refresh();
+
                     StaticContent.filmCollection.AddObject(changeObject, objectImage);
                     StaticContent.filmCollection.RemoveObject(selectedArchiveObject);
 
-                    StaticContent.filmListView.Items.Add(changeObject);
-                    StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;
                 case ECollectionType.GAME:
                     changeObject.platform = ChangeObjectPlatform.Text;
-                    StaticContent.gameCollection.AddObject(changeObject, objectImage);
-                    StaticContent.gameCollection.RemoveObject(selectedArchiveObject);
 
                     StaticContent.gameListView.Items.Add(changeObject);
                     StaticContent.gameListView.Items.Remove(StaticContent.gameListView.SelectedItem);
+                    //StaticContent.filmListView.Items.Refresh();
+
+                    StaticContent.gameCollection.AddObject(changeObject, objectImage);
+                    StaticContent.gameCollection.RemoveObject(selectedArchiveObject);
+
                     MessageBox.Show(name + " was changed");
                     Close();
                     break;

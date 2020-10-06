@@ -81,14 +81,25 @@ namespace ArchiveManager.Windows
         private void AddObjectButton_Click(object sender, RoutedEventArgs e)
         {
             string name = AddObjectName.GetLineText(0);
-            float score = 0;
+            int score = 0;
             string genre = AddObjectGenre.GetLineText(0);
             string creator = AddObjectCreator.GetLineText(0);
             float timeForComplete = 0;
             int releaseYear = 0;
             try
             {
-                score = float.Parse(AddObjectScore.GetLineText(0));
+                score = int.Parse(AddObjectScore.GetLineText(0));
+                if (score > 100)
+                {
+                    score = 100;
+                }
+                else
+                {
+                    if (score < 0)
+                    {
+                        score = 0;
+                    }
+                }
             }
             catch (FormatException)
             {

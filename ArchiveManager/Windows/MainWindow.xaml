@@ -58,7 +58,7 @@
                             <GridViewColumn x:Name="BookGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn x:Name="BookGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
                             <GridViewColumn x:Name="BookGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn x:Name="BookGridCreator" Header="Autor" Width="100" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="BookGridCreator" Header="Autor" Width="130" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn x:Name="BookGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn x:Name="BookGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
@@ -86,8 +86,8 @@
                             </GridViewColumn>
                             <GridViewColumn x:Name="FilmGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn x:Name="FilmGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn x:Name="FilmGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn x:Name="FilmGridCreator" Header="Director" Width="100" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="FilmGridGenre" Header="Genre" Width="150" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="FilmGridCreator" Header="Director" Width="130" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn x:Name="FilmGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn x:Name="FilmGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
