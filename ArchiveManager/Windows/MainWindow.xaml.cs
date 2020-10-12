@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace ArchiveManager.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, MyWindowInterface
     {
         private string objectImage = "";
 
@@ -30,6 +30,15 @@ namespace ArchiveManager.Windows
             LoadGameList();
         }
 
+        private void SetSDisplayedScore()
+        {
+            var animeObjects = StaticContent.animeCollection.GetArchiveObjects();
+            var bookObjects = StaticContent.bookCollection.GetArchiveObjects();
+            var filmObjects = StaticContent.filmCollection.GetArchiveObjects();
+            var gameObjects = StaticContent.gameCollection.GetArchiveObjects();
+            fds
+        }
+
         public void LoadAnimeList()
         {
             StaticContent.animeCollection = new ArchiveCollection(ECollectionType.ANIME);
@@ -38,6 +47,7 @@ namespace ArchiveManager.Windows
             var animeObjects = StaticContent.animeCollection.GetArchiveObjects();
             for (int i = 0; i < animeObjects.Count; ++i)
             {
+                animeObjects[i].SetDispledScore();
                 AnimeListView.Items.Add(animeObjects[i]);
             }
         }
@@ -50,6 +60,7 @@ namespace ArchiveManager.Windows
             var bookObjects = StaticContent.bookCollection.GetArchiveObjects();
             for (int i = 0; i < bookObjects.Count; ++i)
             {
+                bookObjects[i].SetDispledScore();
                 BookListView.Items.Add(bookObjects[i]);
             }
         }
@@ -62,6 +73,7 @@ namespace ArchiveManager.Windows
             var filmObjects = StaticContent.filmCollection.GetArchiveObjects();
             for (int i = 0; i < filmObjects.Count; ++i)
             {
+                filmObjects[i].SetDispledScore();
                 FilmListView.Items.Add(filmObjects[i]);
             }
         }
@@ -74,6 +86,7 @@ namespace ArchiveManager.Windows
             var gameObjects = StaticContent.gameCollection.GetArchiveObjects();
             for (int i = 0; i < gameObjects.Count; ++i)
             {
+                gameObjects[i].SetDispledScore();
                 GameListView.Items.Add(gameObjects[i]);
             }
         }
@@ -81,6 +94,17 @@ namespace ArchiveManager.Windows
         private void AddObjectButton_Click(object sender, RoutedEventArgs e)
         {
             string name = AddObjectName.GetLineText(0);
+            if (name.Contains("/") ||
+                name.Contains(":") ||
+                name.Contains("*") ||
+                name.Contains("?") ||
+                name.Contains("<") ||
+                name.Contains(">") ||
+                name.Contains("|"))
+            {
+                MessageBox.Show(StaticContent.GetErrorNameText());
+                return;
+            }
             int score = 0;
             string genre = AddObjectGenre.GetLineText(0);
             string creator = AddObjectCreator.GetLineText(0);
@@ -135,12 +159,12 @@ namespace ArchiveManager.Windows
                         {
                             newObject.type = ECollectionType.ANIME;
                             StaticContent.animeCollection.AddObject(newObject, objectImage);
-                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            MessageBox.Show(name + StaticContent.GetFileAddMessage());
                             AnimeListView.Items.Add(newObject);
                         }
                         else
                         {
-                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                            MessageBox.Show(name + StaticContent.GetFileExistAddMessage());
                         }
                         break;
                     case "Book":
@@ -148,12 +172,12 @@ namespace ArchiveManager.Windows
                         {
                             newObject.type = ECollectionType.BOOK;
                             StaticContent.bookCollection.AddObject(newObject, objectImage);
-                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            MessageBox.Show(name + StaticContent.GetFileAddMessage());
                             BookListView.Items.Add(newObject);
                         }
                         else
                         {
-                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                            MessageBox.Show(name + StaticContent.GetFileExistAddMessage());
                         }
                         break;
                     case "Film":
@@ -161,12 +185,12 @@ namespace ArchiveManager.Windows
                         {
                             newObject.type = ECollectionType.FILM;
                             StaticContent.filmCollection.AddObject(newObject, objectImage);
-                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            MessageBox.Show(name + StaticContent.GetFileAddMessage());
                             FilmListView.Items.Add(newObject);
                         }
                         else
                         {
-                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                            MessageBox.Show(name + StaticContent.GetFileExistAddMessage());
                         }
                         break;
                     case "Game":
@@ -175,12 +199,12 @@ namespace ArchiveManager.Windows
                             newObject.platform = AddObjectPlatform.Text;
                             newObject.type = ECollectionType.GAME;
                             StaticContent.gameCollection.AddObject(newObject, objectImage);
-                            MessageBox.Show(selectedItem.Text + ": " + name + " was added");
+                            MessageBox.Show(name + StaticContent.GetFileAddMessage());
                             GameListView.Items.Add(newObject);
                         }
                         else
                         {
-                            MessageBox.Show(selectedItem.Text + ": " + name + " already  exist in collection");
+                            MessageBox.Show(name + StaticContent.GetFileExistAddMessage());
                         }
                         break;
                 }
@@ -236,6 +260,7 @@ namespace ArchiveManager.Windows
                 var changeObjectWindow = new ChangeObjectWindow();
                 changeObjectWindow.SetValuesInFields(selectedItem);
                 changeObjectWindow.Show();
+                StaticContent.openWindows.Add(changeObjectWindow);
             }
         }
 
@@ -247,6 +272,7 @@ namespace ArchiveManager.Windows
                 var changeObjectWindow = new ChangeObjectWindow();
                 changeObjectWindow.SetValuesInFields(selectedItem);
                 changeObjectWindow.Show();
+                StaticContent.openWindows.Add(changeObjectWindow);
             }
         }
 
@@ -258,6 +284,7 @@ namespace ArchiveManager.Windows
                 var changeObjectWindow = new ChangeObjectWindow();
                 changeObjectWindow.SetValuesInFields(selectedItem);
                 changeObjectWindow.Show();
+                StaticContent.openWindows.Add(changeObjectWindow);
             }
         }
 
@@ -269,6 +296,7 @@ namespace ArchiveManager.Windows
                 var changeObjectWindow = new ChangeObjectWindow();
                 changeObjectWindow.SetValuesInFields(selectedItem);
                 changeObjectWindow.Show();
+                StaticContent.openWindows.Add(changeObjectWindow);
             }
         }
 
@@ -336,6 +364,141 @@ namespace ArchiveManager.Windows
 
         private void MenuItem_ChoseRussianLanguage(object sender, RoutedEventArgs e)
         {
+            StaticContent.language = ELanguage.RUSSIAN;
+            SetLanguage();
+            for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+            {
+                StaticContent.openWindows[i].SetLanguage();
+            }
+        }
+
+        private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
+        {
+            StaticContent.language = ELanguage.ENGLISH;
+            SetLanguage();
+            for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+            {
+                StaticContent.openWindows[i].SetLanguage();
+            }
+        }
+
+        void AnimeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+                StaticContent.openWindows.Add(showObjectWindow);
+            }
+        }
+
+        void BookListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = BookListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+                StaticContent.openWindows.Add(showObjectWindow);
+            }
+        }
+
+        void FilmListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+                StaticContent.openWindows.Add(showObjectWindow);
+            }
+        }
+
+        void GameListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = GameListView.SelectedItem as ArchiveObject;
+            if (selectedItem != null)
+            {
+                var showObjectWindow = new ShowObjectWindow(selectedItem);
+                showObjectWindow.Show();
+                StaticContent.openWindows.Add(showObjectWindow);
+            }
+        }
+
+        public void SetLanguage()
+        {
+            if (StaticContent.language == ELanguage.ENGLISH)
+            {
+                SetEngLanguage();
+            }
+            else
+            {
+                SetRuLanguage();
+            }
+        }
+
+        public void SetEngLanguage()
+        {
+            AnimesTabItem.Header = "Animes";
+            BooksTabItem.Header = "Books";
+            FilmsTabItem.Header = "Films";
+            GamesTabItem.Header = "Games";
+            AddObjectTabItem.Header = "Add New Object";
+
+            AnimeGridImage.Header = "Image";
+            AnimeGridName.Header = "Name";
+            AnimeGridScore.Header = "Score";
+            AnimeGridGenre.Header = "Genre";
+            AnimeGridReleaseYear.Header = "Release Year";
+            AnimeGridCompleted.Header = "Completed";
+
+            BookGridImage.Header = "Image";
+            BookGridName.Header = "Name";
+            BookGridScore.Header = "Score";
+            BookGridGenre.Header = "Genre";
+            BookGridCreator.Header = "Author";
+            BookGridReleaseYear.Header = "Release Year";
+            BookGridCompleted.Header = "Completed";
+
+            FilmGridImage.Header = "Image";
+            FilmGridName.Header = "Name";
+            FilmGridScore.Header = "Score";
+            FilmGridGenre.Header = "Genre";
+            FilmGridCreator.Header = "Director";
+            FilmGridReleaseYear.Header = "Release Year";
+            FilmGridCompleted.Header = "Completed";
+
+            GameGridImage.Header = "Image";
+            GameGridName.Header = "Name";
+            GameGridScore.Header = "Score";
+            GameGridPlatform.Header = "Platform";
+            GameGridGenre.Header = "Genre";
+            GameGridCreator.Header = "Developer Studio";
+            GameGridReleaseYear.Header = "Release Year";
+            GameGridCompleted.Header = "Completed";
+
+            MenuItemFile.Header = "File";
+            MenuItemChoseLanguage.Header = "Chose Language";
+            MenuItemChoseLanguage_English.Header = "English";
+            MenuItemChoseLanguage_Russian.Header = "Russian";
+            MenuItemExit.Header = "Exit";
+
+            AddObjectSelectTypeLabel.Content = "Chose Type";
+            AddObjectNameLabel.Content = "Name";
+            AddObjectScoreLabel.Content = "Score";
+            AddObjectGenreLabel.Content = "Genre";
+            AddObjectTimeForCompleteLabel.Content = "Time For complete";
+            AddObjectReleaseYearLabel.Content = "Release Year";
+            AddObjectPlatformLabel.Content = "Platform";
+            AddObjectCreatorLabel.Content = "Creator";
+            AddObjectImageLabel.Content = "Image was selected";
+            AddObjectButton.Content = "Add";
+            AddObjectLoadImageButton.Content = "Load Imagе";
+        }
+
+        public void SetRuLanguage()
+        {
             AnimesTabItem.Header = "Аниме";
             BooksTabItem.Header = "Книги";
             FilmsTabItem.Header = "Фильмы";
@@ -391,55 +554,6 @@ namespace ArchiveManager.Windows
             AddObjectImageLabel.Content = "Изображение было выбрано";
             AddObjectButton.Content = "Добавить";
             AddObjectLoadImageButton.Content = "Выбрать изображение";
-        }
-
-        private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
-        {
-            AnimesTabItem.Header = "Animes";
-            BooksTabItem.Header = "Books";
-            FilmsTabItem.Header = "Films";
-            GamesTabItem.Header = "Games";
-            AddObjectTabItem.Header = "Add New Object";
-        }
-
-        void AnimeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-            }
-        }
-
-        void BookListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var selectedItem = BookListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-            }
-        }
-
-        void FilmListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-            }
-        }
-
-        void GameListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var selectedItem = GameListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-            }
         }
     }
 }

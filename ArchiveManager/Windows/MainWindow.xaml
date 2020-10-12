@@ -28,8 +28,8 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn x:Name="AnimeGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn x:Name="AnimeGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn x:Name="AnimeGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
+                            <GridViewColumn x:Name="AnimeGridScore" Header="Score" Width="120" DisplayMemberBinding="{Binding displayedScore}"/>
+                            <GridViewColumn x:Name="AnimeGridGenre" Header="Genre" Width="150" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn x:Name="AnimeGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn x:Name="AnimeGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
@@ -56,9 +56,9 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn x:Name="BookGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn x:Name="BookGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="BookGridScore" Header="Score" Width="120" DisplayMemberBinding="{Binding displayedScore}"/>
                             <GridViewColumn x:Name="BookGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
-                            <GridViewColumn x:Name="BookGridCreator" Header="Autor" Width="130" DisplayMemberBinding="{Binding creator}"/>
+                            <GridViewColumn x:Name="BookGridCreator" Header="Author" Width="130" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn x:Name="BookGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
                             <GridViewColumn x:Name="BookGridCompleted" Header="Completed" Width="70" DisplayMemberBinding="{Binding isCompleted}"/>
                         </GridView>
@@ -85,7 +85,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn x:Name="FilmGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn x:Name="FilmGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
+                            <GridViewColumn x:Name="FilmGridScore" Header="Score" Width="120" DisplayMemberBinding="{Binding displayedScore}"/>
                             <GridViewColumn x:Name="FilmGridGenre" Header="Genre" Width="150" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn x:Name="FilmGridCreator" Header="Director" Width="130" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn x:Name="FilmGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>
@@ -114,8 +114,8 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn x:Name="GameGridName" Header="Name" Width="250" DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn x:Name="GameGridScore" Header="Score" Width="100" DisplayMemberBinding="{Binding score}"/>
-                            <GridViewColumn x:Name="GameGridPlatform" Header="Platform" Width="120" DisplayMemberBinding="{Binding platform}"/>
+                            <GridViewColumn x:Name="GameGridScore" Header="Score" Width="120" DisplayMemberBinding="{Binding displayedScore}"/>
+                            <GridViewColumn x:Name="GameGridPlatform" Header="Platform" Width="140" DisplayMemberBinding="{Binding platform}"/>
                             <GridViewColumn x:Name="GameGridGenre" Header="Genre" Width="100" DisplayMemberBinding="{Binding genre}"/>
                             <GridViewColumn x:Name="GameGridCreator" Header="Developer studio" Width="120" DisplayMemberBinding="{Binding creator}"/>
                             <GridViewColumn x:Name="GameGridReleaseYear" Header="Release year" Width="100" DisplayMemberBinding="{Binding releaseYear}"/>

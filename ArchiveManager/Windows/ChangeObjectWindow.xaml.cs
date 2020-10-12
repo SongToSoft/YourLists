@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 
 namespace ArchiveManager.Windows
 {
-    public partial class ChangeObjectWindow : Window
+    public partial class ChangeObjectWindow : Window, MyWindowInterface
     {
         private ArchiveObject selectedArchiveObject;
         private string objectImage = "";
@@ -42,6 +42,7 @@ namespace ArchiveManager.Windows
                 ChangeObjectReleaseYear.Text = archiveObject.releaseYear.ToString();
             if (archiveObject.genre != "")
                 ChangeObjectGenre.Text = archiveObject.genre;
+
             if (archiveObject.type != ECollectionType.ANIME)
             {
                 ChangeObjectCreatorLabel.Visibility = Visibility.Visible;
@@ -54,6 +55,7 @@ namespace ArchiveManager.Windows
                 ChangeObjectCreatorLabel.Visibility = Visibility.Hidden;
                 ChangeObjectCreator.Visibility = Visibility.Hidden;
             }
+
             if (archiveObject.type == ECollectionType.GAME)
             {
                 ChangeObjectPlatform.Visibility = Visibility.Visible;
@@ -66,6 +68,7 @@ namespace ArchiveManager.Windows
                 ChangeObjectPlatform.Visibility = Visibility.Hidden;
                 ChangeObjectPlatformLabel.Visibility = Visibility.Hidden;
             }
+
             if (archiveObject.type == ECollectionType.BOOK)
             {
                 ChangeObjectTimeForComplete.Visibility = Visibility.Hidden;
@@ -84,11 +87,23 @@ namespace ArchiveManager.Windows
                     ChangeObjectImageLabel.Visibility = Visibility.Hidden;
                 }
             }
+
         }
 
         public void ChangeObjectButton_Click(object sender, RoutedEventArgs e)
         {
             string name = ChangeObjectName.GetLineText(0);
+            if (name.Contains("/") ||
+                name.Contains(":") ||
+                name.Contains("*") ||
+                name.Contains("?") ||
+                name.Contains("<") ||
+                name.Contains(">") ||
+                name.Contains("|"))
+            {
+                MessageBox.Show(StaticContent.GetErrorNameText());
+                return;
+            }
             int score = 0;
             string genre = ChangeObjectGenre.GetLineText(0);
             string creator = ChangeObjectCreator.GetLineText(0);
@@ -139,33 +154,30 @@ namespace ArchiveManager.Windows
                 case ECollectionType.ANIME:
                     StaticContent.animeListView.Items.Add(changeObject);
                     StaticContent.animeListView.Items.Remove(StaticContent.animeListView.SelectedItem);
-                    //StaticContent.animeListView.Items.Refresh();
 
                     StaticContent.animeCollection.AddObject(changeObject, objectImage);
                     StaticContent.animeCollection.RemoveObject(selectedArchiveObject);
-                    MessageBox.Show(name + " was changed");
+                    MessageBox.Show(name + StaticContent.GetChangeMessage());
                     Close();
                     break;
                 case ECollectionType.BOOK:
                     StaticContent.bookListView.Items.Add(changeObject);
                     StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
-                    //StaticContent.bookListView.Items.Refresh();
 
                     StaticContent.bookCollection.AddObject(changeObject, objectImage);
                     StaticContent.bookCollection.RemoveObject(selectedArchiveObject);
 
-                    MessageBox.Show(name + " was changed");
+                    MessageBox.Show(name + StaticContent.GetChangeMessage());
                     Close();
                     break;
                 case ECollectionType.FILM:
                     StaticContent.filmListView.Items.Add(changeObject);
                     StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
-                    //StaticContent.filmListView.Items.Refresh();
 
                     StaticContent.filmCollection.AddObject(changeObject, objectImage);
                     StaticContent.filmCollection.RemoveObject(selectedArchiveObject);
 
-                    MessageBox.Show(name + " was changed");
+                    MessageBox.Show(name + StaticContent.GetChangeMessage());
                     Close();
                     break;
                 case ECollectionType.GAME:
@@ -173,12 +185,11 @@ namespace ArchiveManager.Windows
 
                     StaticContent.gameListView.Items.Add(changeObject);
                     StaticContent.gameListView.Items.Remove(StaticContent.gameListView.SelectedItem);
-                    //StaticContent.filmListView.Items.Refresh();
 
                     StaticContent.gameCollection.AddObject(changeObject, objectImage);
                     StaticContent.gameCollection.RemoveObject(selectedArchiveObject);
 
-                    MessageBox.Show(name + " was changed");
+                    MessageBox.Show(name + StaticContent.GetChangeMessage());
                     Close();
                     break;
             }
@@ -196,6 +207,87 @@ namespace ArchiveManager.Windows
                 objectImage = op.FileName;
                 ChangeObjectImageLabel.Visibility = Visibility.Visible;
             }
+        }
+
+        public void SetLanguage()
+        {
+            if (StaticContent.language == ELanguage.ENGLISH)
+            {
+                SetEngLanguage();
+            }
+            else
+            {
+                SetRuLanguage();
+            }
+        }
+
+        public void SetEngLanguage()
+        {
+            ChangeObjectButton.Content = "Change";
+            ChangeObjectImageButton.Content = "Load Image";
+            ChangeObjectIsCompleted.Content = "Is Completed";
+            ChangeObjectNameLabel.Content = "Name";
+            ChangeObjectScoreLabel.Content = "Score";
+            ChangeObjectGenreLabel.Content = "Genre";
+
+            switch (selectedArchiveObject.type)
+            {
+                case ECollectionType.BOOK:
+                    ChangeObjectCreatorLabel.Content = "Author";
+                    break;
+                case ECollectionType.FILM:
+                    ChangeObjectCreatorLabel.Content = "Director";
+                    break;
+                case ECollectionType.GAME:
+                    ChangeObjectCreatorLabel.Content = "Developer Studio";
+                    break;
+                default:
+                    ChangeObjectCreatorLabel.Content = "Author";
+                    break;
+            }
+            ChangeObjectTimeForCompleteLabel.Content = "Time For Complete";
+            ChangeObjectReleaseYearLabel.Content = "Release Year";
+            ChangeObjectPlatformLabel.Content = "Platform";
+
+            ChangeObjectImageLabel.Content = "Image was selected";
+
+        }
+
+        public void SetRuLanguage()
+        {
+            ChangeObjectButton.Content = "Изменить";
+            ChangeObjectImageButton.Content = "Загрузить изображение";
+            ChangeObjectIsCompleted.Content = "Закончено";
+            ChangeObjectNameLabel.Content = "Название";
+            ChangeObjectScoreLabel.Content = "Оценка";
+            ChangeObjectGenreLabel.Content = "Жанр";
+
+            switch (selectedArchiveObject.type)
+            {
+                case ECollectionType.BOOK:
+                    ChangeObjectCreatorLabel.Content = "Автор";
+                    break;
+                case ECollectionType.FILM:
+                    ChangeObjectCreatorLabel.Content = "Режиссер";
+                    break;
+                case ECollectionType.GAME:
+                    ChangeObjectCreatorLabel.Content = "Студия разработчик";
+                    break;
+                default:
+                    ChangeObjectCreatorLabel.Content = "Автор";
+                    break;
+            }
+            ChangeObjectTimeForCompleteLabel.Content = "Время на завершение";
+            ChangeObjectReleaseYearLabel.Content = "Год выпуска";
+            ChangeObjectPlatformLabel.Content = "Платформа";
+
+            ChangeObjectImageLabel.Content = "Изображение было выбрано";
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            StaticContent.openWindows.Remove(this);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace ArchiveManager.Objects
         public string platform { get; set; }
         [DataMember]
         public string image { get; set; }
+        public string displayedScore { get; set; }
 
         public ArchiveObject(string _name = "name", int _score = 0, float _timeForComplete = 0, int _releaseYear = 0, bool _isCompleted = false, string _genre = "", string _creator = "", ECollectionType _type = ECollectionType.ANIME, string _platform = "")
         {
@@ -45,6 +46,8 @@ namespace ArchiveManager.Objects
             type = _type;
             platform = _platform;
             image = Path.GetFullPath((Directory.GetCurrentDirectory() + @"\DataBase\Images\question_icon.png").ToString());
+
+            SetDispledScore();
         }
 
         public void SetImagePath(string imagePath = "")
@@ -52,6 +55,18 @@ namespace ArchiveManager.Objects
             if (imagePath != "")
             {
                 image = imagePath;
+            }
+        }
+
+        public void SetDispledScore()
+        {
+            if (score > 0)
+            {
+                displayedScore = score.ToString();
+            }
+            else
+            {
+                displayedScore = "Score not defined";
             }
         }
     }
