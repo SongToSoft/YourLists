@@ -23,45 +23,57 @@ namespace ArchiveManager.Windows
         private ArchiveObject selectedArchiveObject;
         private string objectImage = "";
 
-        public ChangeObjectWindow()
+        public ChangeObjectWindow(ArchiveObject archiveObject)
         {
             InitializeComponent();
+            selectedArchiveObject = archiveObject;
+            SetLanguage();
+            SetValuesInFields();
         }
 
-        public void SetValuesInFields(ArchiveObject archiveObject)
+        private void SetValuesInFields()
         {
-            selectedArchiveObject = archiveObject;
+            if (selectedArchiveObject.name != "")
+                ChangeObjectName.Text = selectedArchiveObject.name;
+            if (selectedArchiveObject.score.ToString() != "")
+                ChangeObjectScore.Text = selectedArchiveObject.score.ToString();
+            if (selectedArchiveObject.timeForComplete.ToString() != "")
+                ChangeObjectTimeForComplete.Text = selectedArchiveObject.timeForComplete.ToString();
+            if (selectedArchiveObject.releaseYear.ToString() != "")
+                ChangeObjectReleaseYear.Text = selectedArchiveObject.releaseYear.ToString();
+            if (selectedArchiveObject.genre != "")
+                ChangeObjectGenre.Text = selectedArchiveObject.genre;
 
-            if (archiveObject.name != "")
-                ChangeObjectName.Text = archiveObject.name;
-            if (archiveObject.score.ToString() != "")
-                ChangeObjectScore.Text = archiveObject.score.ToString();
-            if (archiveObject.timeForComplete.ToString() != "")
-                ChangeObjectTimeForComplete.Text = archiveObject.timeForComplete.ToString();
-            if (archiveObject.releaseYear.ToString() != "")
-                ChangeObjectReleaseYear.Text = archiveObject.releaseYear.ToString();
-            if (archiveObject.genre != "")
-                ChangeObjectGenre.Text = archiveObject.genre;
-
-            if (archiveObject.type != ECollectionType.ANIME)
+            if (selectedArchiveObject.type != ECollectionType.ANIME)
             {
                 ChangeObjectCreatorLabel.Visibility = Visibility.Visible;
                 ChangeObjectCreator.Visibility = Visibility.Visible;
-                if (archiveObject.creator != "")
-                    ChangeObjectCreator.Text = archiveObject.creator;
+                if (selectedArchiveObject.creator != "")
+                    ChangeObjectCreator.Text = selectedArchiveObject.creator;
             }
             else
             {
                 ChangeObjectCreatorLabel.Visibility = Visibility.Hidden;
                 ChangeObjectCreator.Visibility = Visibility.Hidden;
+
+                ChangeObjectTimeForCompleteLabel.SetValue(Canvas.TopProperty, 170.0);
+                ChangeObjectTimeForComplete.SetValue(Canvas.TopProperty, 170.0);
+                ChangeObjectReleaseYearLabel.SetValue(Canvas.TopProperty, 210.0);
+                ChangeObjectReleaseYear.SetValue(Canvas.TopProperty, 210.0);
+                ChangeObjectIsCompleted.SetValue(Canvas.TopProperty, 250.0);
             }
 
-            if (archiveObject.type == ECollectionType.GAME)
+            if (selectedArchiveObject.type == ECollectionType.FILM)
+            {
+                ChangeObjectIsCompleted.SetValue(Canvas.TopProperty, 290.0);
+            }
+
+            if (selectedArchiveObject.type == ECollectionType.GAME)
             {
                 ChangeObjectPlatform.Visibility = Visibility.Visible;
                 ChangeObjectPlatformLabel.Visibility = Visibility.Visible;
-                if (archiveObject.platform != "")
-                    ChangeObjectPlatform.Text = archiveObject.platform;
+                if (selectedArchiveObject.platform != "")
+                    ChangeObjectPlatform.Text = selectedArchiveObject.platform;
             }
             else
             {
@@ -69,16 +81,21 @@ namespace ArchiveManager.Windows
                 ChangeObjectPlatformLabel.Visibility = Visibility.Hidden;
             }
 
-            if (archiveObject.type == ECollectionType.BOOK)
+            if (selectedArchiveObject.type == ECollectionType.BOOK)
             {
                 ChangeObjectTimeForComplete.Visibility = Visibility.Hidden;
                 ChangeObjectTimeForCompleteLabel.Visibility = Visibility.Hidden;
+
+                ChangeObjectReleaseYearLabel.SetValue(Canvas.TopProperty, 210.0);
+                ChangeObjectReleaseYear.SetValue(Canvas.TopProperty, 210.0);
+                ChangeObjectIsCompleted.SetValue(Canvas.TopProperty, 250.0);
             }
-            ChangeObjectIsCompleted.IsChecked = archiveObject.isCompleted;
-            if (File.Exists(archiveObject.image))
+
+            ChangeObjectIsCompleted.IsChecked = selectedArchiveObject.isCompleted;
+            if (File.Exists(selectedArchiveObject.image))
             {
-                objectImage = archiveObject.image;
-                if (!archiveObject.image.Contains(@"\DataBase\Images\question_icon.png"))
+                objectImage = selectedArchiveObject.image;
+                if (!selectedArchiveObject.image.Contains(@"\DataBase\Images\question_icon.png"))
                 {
                     ChangeObjectImageLabel.Visibility = Visibility.Visible;
                 }
@@ -211,13 +228,17 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.language == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
+                ChangeObjectImageButton.Width = 75;
+                ChangeObjectImageLabel.Width = 115;
             }
             else
             {
                 SetRuLanguage();
+                ChangeObjectImageButton.Width = 140;
+                ChangeObjectImageLabel.Width = 140;
             }
         }
 
@@ -277,11 +298,11 @@ namespace ArchiveManager.Windows
                     ChangeObjectCreatorLabel.Content = "Автор";
                     break;
             }
-            ChangeObjectTimeForCompleteLabel.Content = "Время на завершение";
+            ChangeObjectTimeForCompleteLabel.Content = "Время завершения";
             ChangeObjectReleaseYearLabel.Content = "Год выпуска";
             ChangeObjectPlatformLabel.Content = "Платформа";
 
-            ChangeObjectImageLabel.Content = "Изображение было выбрано";
+            ChangeObjectImageLabel.Content = "Изображение выбрано";
         }
 
         protected override void OnClosed(EventArgs e)

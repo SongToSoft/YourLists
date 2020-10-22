@@ -16,3 +16,15 @@ C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\C
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\MainWindow.baml
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\Windows\ShowObjectWindow.baml
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.csprojAssemblyReference.cache
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\ControlzEx.dll
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\MahApps.Metro.dll
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\ControlzEx.pdb
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\ControlzEx.xml
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\MahApps.Metro.pdb
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\MahApps.Metro.xml
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.csproj.CopyComplete
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\NewWindow.baml
+C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\NewWindow.g.cs

@@ -66,7 +66,7 @@ namespace ArchiveManager.Objects
             }
             else
             {
-                displayedScore = "Score not defined";
+                displayedScore = StaticContent.GetDisplayedScoreText();
             }
         }
     }

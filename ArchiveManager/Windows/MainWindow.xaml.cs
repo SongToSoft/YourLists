@@ -1,23 +1,14 @@
 ﻿using ArchiveManager.Objects;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace ArchiveManager.Windows
 {
-    public partial class MainWindow : Window, MyWindowInterface
+    public partial class MainWindow : MyWindowInterface
     {
         private string objectImage = "";
 
@@ -30,13 +21,38 @@ namespace ArchiveManager.Windows
             LoadGameList();
         }
 
-        private void SetSDisplayedScore()
+        private void SetDisplayedScore()
         {
             var animeObjects = StaticContent.animeCollection.GetArchiveObjects();
             var bookObjects = StaticContent.bookCollection.GetArchiveObjects();
             var filmObjects = StaticContent.filmCollection.GetArchiveObjects();
             var gameObjects = StaticContent.gameCollection.GetArchiveObjects();
-            fds
+
+            AnimeListView.Items.Clear();
+            BookListView.Items.Clear();
+            FilmListView.Items.Clear();
+            GameListView.Items.Clear();
+
+            for (int i = 0; i < animeObjects.Count; ++i)
+            {
+                animeObjects[i].SetDispledScore();
+                AnimeListView.Items.Add(animeObjects[i]);
+            }
+            for (int i = 0; i < bookObjects.Count; ++i)
+            {
+                bookObjects[i].SetDispledScore();
+                BookListView.Items.Add(bookObjects[i]);
+            }
+            for (int i = 0; i < filmObjects.Count; ++i)
+            {
+                filmObjects[i].SetDispledScore();
+                FilmListView.Items.Add(filmObjects[i]);
+            }
+            for (int i = 0; i < gameObjects.Count; ++i)
+            {
+                gameObjects[i].SetDispledScore();
+                GameListView.Items.Add(gameObjects[i]);
+            }
         }
 
         public void LoadAnimeList()
@@ -257,8 +273,7 @@ namespace ArchiveManager.Windows
             var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
-                var changeObjectWindow = new ChangeObjectWindow();
-                changeObjectWindow.SetValuesInFields(selectedItem);
+                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
                 changeObjectWindow.Show();
                 StaticContent.openWindows.Add(changeObjectWindow);
             }
@@ -269,8 +284,7 @@ namespace ArchiveManager.Windows
             var selectedItem = BookListView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
-                var changeObjectWindow = new ChangeObjectWindow();
-                changeObjectWindow.SetValuesInFields(selectedItem);
+                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
                 changeObjectWindow.Show();
                 StaticContent.openWindows.Add(changeObjectWindow);
             }
@@ -281,8 +295,7 @@ namespace ArchiveManager.Windows
             var selectedItem = FilmListView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
-                var changeObjectWindow = new ChangeObjectWindow();
-                changeObjectWindow.SetValuesInFields(selectedItem);
+                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
                 changeObjectWindow.Show();
                 StaticContent.openWindows.Add(changeObjectWindow);
             }
@@ -293,8 +306,7 @@ namespace ArchiveManager.Windows
             var selectedItem = GameListView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
-                var changeObjectWindow = new ChangeObjectWindow();
-                changeObjectWindow.SetValuesInFields(selectedItem);
+                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
                 changeObjectWindow.Show();
                 StaticContent.openWindows.Add(changeObjectWindow);
             }
@@ -348,8 +360,8 @@ namespace ArchiveManager.Windows
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
+                        "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                        "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
                 objectImage = op.FileName;
@@ -364,60 +376,53 @@ namespace ArchiveManager.Windows
 
         private void MenuItem_ChoseRussianLanguage(object sender, RoutedEventArgs e)
         {
-            StaticContent.language = ELanguage.RUSSIAN;
-            SetLanguage();
-            for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+            if (StaticContent.setting.language != ELanguage.RUSSIAN)
             {
-                StaticContent.openWindows[i].SetLanguage();
+                StaticContent.setting.language = ELanguage.RUSSIAN;
+                SetLanguage();
+                for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+                {
+                    StaticContent.openWindows[i].SetLanguage();
+                }
             }
         }
 
         private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
         {
-            StaticContent.language = ELanguage.ENGLISH;
-            SetLanguage();
-            for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+            if (StaticContent.setting.language != ELanguage.ENGLISH)
             {
-                StaticContent.openWindows[i].SetLanguage();
+                StaticContent.setting.language = ELanguage.ENGLISH;
+                SetLanguage();
+                for (int i = 0; i < StaticContent.openWindows.Count; ++i)
+                {
+                    StaticContent.openWindows[i].SetLanguage();
+                }
             }
         }
 
         void AnimeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-                StaticContent.openWindows.Add(showObjectWindow);
-            }
+            OpenShowWindow(AnimeListView);
         }
 
         void BookListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = BookListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-                StaticContent.openWindows.Add(showObjectWindow);
-            }
+            OpenShowWindow(BookListView);
         }
 
         void FilmListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var showObjectWindow = new ShowObjectWindow(selectedItem);
-                showObjectWindow.Show();
-                StaticContent.openWindows.Add(showObjectWindow);
-            }
+            OpenShowWindow(FilmListView);
         }
 
         void GameListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = GameListView.SelectedItem as ArchiveObject;
+            OpenShowWindow(GameListView);
+        }
+
+        private void OpenShowWindow(ListView listView)
+        {
+            var selectedItem = listView.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
                 var showObjectWindow = new ShowObjectWindow(selectedItem);
@@ -428,19 +433,45 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.language == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
+                AddObjectSelectTypeLabel.SetValue(Canvas.LeftProperty, 40.0);
+                AddObjectNameLabel.SetValue(Canvas.LeftProperty, 40.0);
+                AddObjectScoreLabel.SetValue(Canvas.LeftProperty, 40.0);
+                AddObjectGenreLabel.SetValue(Canvas.LeftProperty, 40.0);
+                AddObjectTimeForCompleteLabel.SetValue(Canvas.LeftProperty, 40.0);
+                AddObjectReleaseYearLabel.SetValue(Canvas.LeftProperty, 40.0);
+
+
+                AddObjectLoadImageButton.SetValue(Canvas.LeftProperty, 700.0);
+                AddObjectLoadImageButton.Width = 75.0;
+
+                AddObjectImageLabel.Width = 115;
+                AddObjectImageLabel.SetValue(Canvas.LeftProperty, 680.0);
             }
             else
             {
                 SetRuLanguage();
+                AddObjectSelectTypeLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectNameLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectScoreLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectGenreLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectTimeForCompleteLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectReleaseYearLabel.SetValue(Canvas.LeftProperty, 20.0);
+
+                AddObjectLoadImageButton.SetValue(Canvas.LeftProperty, 673.0);
+                AddObjectLoadImageButton.Width = 129.0;
+
+                AddObjectImageLabel.Width = 175.0;
+                AddObjectImageLabel.SetValue(Canvas.LeftProperty, 650.0);
             }
+            SetDisplayedScore();
         }
 
         public void SetEngLanguage()
         {
-            AnimesTabItem.Header = "Animes";
+            AnimesTabItem.Header = "Animes/Cartoons";
             BooksTabItem.Header = "Books";
             FilmsTabItem.Header = "Films";
             GamesTabItem.Header = "Games";
@@ -499,7 +530,7 @@ namespace ArchiveManager.Windows
 
         public void SetRuLanguage()
         {
-            AnimesTabItem.Header = "Аниме";
+            AnimesTabItem.Header = "Аниме/Мультики";
             BooksTabItem.Header = "Книги";
             FilmsTabItem.Header = "Фильмы";
             GamesTabItem.Header = "Игры";

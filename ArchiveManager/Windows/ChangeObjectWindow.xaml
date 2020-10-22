@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Change Object" Height="550" Width="700">
     <Canvas>
-        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="160" Canvas.Top="420" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5"/>
+        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="160" Canvas.Top="430" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5"/>
         <Button Name="ChangeObjectImageButton" Content="Load Image" Canvas.Left="160" Canvas.Top="370" Width="75" Height="24" Click="ChangeObjectImageButton_Click"/>
         <TextBox Name="ChangeObjectName" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="50" Width="500"/>
         <TextBox Name="ChangeObjectScore" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="350"/>
@@ -17,13 +17,13 @@
         <TextBox Name="ChangeObjectReleaseYear" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350"/>
         <TextBox Name="ChangeObjectPlatform" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="290" Width="350" />
         <CheckBox Name="ChangeObjectIsCompleted" Content="Is Completed" Canvas.Left="156" Canvas.Top="330"/>
-        <Label Name="ChangeObjectNameLabel" Content="Name" Canvas.Left="40" Canvas.Top="50"/>
-        <Label Name="ChangeObjectScoreLabel" Content="Score" Canvas.Left="40" Canvas.Top="90"/>
-        <Label Name="ChangeObjectGenreLabel" Content="Genre" Canvas.Left="40" Canvas.Top="130"/>
-        <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="40" Canvas.Top="170"/>
-        <Label Name="ChangeObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
-        <Label Name="ChangeObjectReleaseYearLabel" Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
-        <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="40" Canvas.Top="290"/>
-        <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="250" Canvas.Top="370" Width="115"/>
+        <Label Name="ChangeObjectNameLabel" Content="Name" Canvas.Left="30" Canvas.Top="50"/>
+        <Label Name="ChangeObjectScoreLabel" Content="Score" Canvas.Left="30" Canvas.Top="90"/>
+        <Label Name="ChangeObjectGenreLabel" Content="Genre" Canvas.Left="30" Canvas.Top="130"/>
+        <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="30" Canvas.Top="170"/>
+        <Label Name="ChangeObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="30" Canvas.Top="210"/>
+        <Label Name="ChangeObjectReleaseYearLabel" Content="Release Year" Canvas.Left="30" Canvas.Top="250"/>
+        <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="30" Canvas.Top="290"/>
+        <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="155" Canvas.Top="399" Width="115"/>
     </Canvas>
 </Window>

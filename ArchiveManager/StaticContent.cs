@@ -10,11 +10,6 @@ using System.Windows.Controls;
 
 namespace ArchiveManager
 {
-    public enum ELanguage
-    {
-        ENGLISH,
-        RUSSIAN
-    }
 
     interface MyWindowInterface
     {
@@ -27,12 +22,12 @@ namespace ArchiveManager
     {
         static public ArchiveCollection animeCollection, bookCollection, filmCollection, gameCollection;
         static public ListView animeListView, bookListView, filmListView, gameListView;
-        static public ELanguage language = ELanguage.ENGLISH;
         static public List<MyWindowInterface> openWindows = new List<MyWindowInterface>();
+        static public Settings setting = new Settings();
 
         static public string GetErrorNameText()
         {
-            if (language == ELanguage.ENGLISH)
+            if (setting.language == ELanguage.ENGLISH)
             {
                 return ("Incorect name, dont use /:*?<>|");
             }
@@ -44,7 +39,7 @@ namespace ArchiveManager
 
         static public string GetDisplayedScoreText()
         {
-            if (language == ELanguage.ENGLISH)
+            if (setting.language == ELanguage.ENGLISH)
             {
                 return ("Score not defined");
             }
@@ -56,7 +51,7 @@ namespace ArchiveManager
 
         static public string GetFileAddMessage()
         {
-            if (language == ELanguage.ENGLISH)
+            if (setting.language == ELanguage.ENGLISH)
             {
                 return (" was added");
             }
@@ -68,7 +63,7 @@ namespace ArchiveManager
 
         static public string GetFileExistAddMessage()
         {
-            if (language == ELanguage.ENGLISH)
+            if (setting.language == ELanguage.ENGLISH)
             {
                 return (" already exist in collection");
             }
@@ -80,7 +75,7 @@ namespace ArchiveManager
 
         static public string GetChangeMessage()
         {
-            if (language == ELanguage.ENGLISH)
+            if (setting.language == ELanguage.ENGLISH)
             {
                 return (" was changed");
             }

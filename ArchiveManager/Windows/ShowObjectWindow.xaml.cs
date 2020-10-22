@@ -18,7 +18,7 @@ namespace ArchiveManager.Windows
     public partial class ShowObjectWindow : Window, MyWindowInterface
     {
         private ArchiveObject selectedArchiveObject;
-
+        private int marginTextX = 365;
         public ShowObjectWindow(ArchiveObject _archiveObject)
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace ArchiveManager.Windows
         {
             ShowObjectImage.Source = new ImageSourceConverter().ConvertFromString(selectedArchiveObject.image) as ImageSource;
             ShowObjectNameText.Content = selectedArchiveObject.name;
-            ShowObjectScoreText.Content = selectedArchiveObject.score.ToString();
+            ShowObjectScoreText.Content = selectedArchiveObject.displayedScore.ToString();
             ShowObjectGenreText.Content = selectedArchiveObject.genre;
 
             if (selectedArchiveObject.type == ECollectionType.GAME)
@@ -44,8 +44,8 @@ namespace ArchiveManager.Windows
             {
                 ShowObjectPlatformLabel.Visibility = Visibility.Hidden;
                 ShowObjectPlatformText.Visibility = Visibility.Hidden;
-                ShowObjectIsCompleteLabel.Margin = new Thickness(246, 280, 0, 0);
-                ShowObjectIsCompleteText.Margin = new Thickness(372, 280, 0, 0);
+                ShowObjectIsCompleteLabel.Margin = new Thickness(250, 280, 0, 0);
+                ShowObjectIsCompleteText.Margin = new Thickness(marginTextX, 280, 0, 0);
             }
 
             if (selectedArchiveObject.type != ECollectionType.ANIME)
@@ -58,12 +58,22 @@ namespace ArchiveManager.Windows
             {
                 ShowObjectCreatorLabel.Visibility = Visibility.Hidden;
                 ShowObjectCreatorText.Visibility = Visibility.Hidden;
-                ShowObjectTimeForCompleteLabel.Margin = new Thickness(246, 160, 0, 0);
-                ShowObjectTimeForCompleteText.Margin = new Thickness(372, 160, 0, 0);
-                ShowObjectReleaseYearLabel.Margin = new Thickness(246, 200, 0, 0);
-                ShowObjectReleaseYearText.Margin = new Thickness(372, 200, 0, 0);
-                ShowObjectIsCompleteLabel.Margin = new Thickness(246, 240, 0, 0);
-                ShowObjectIsCompleteText.Margin = new Thickness(372, 240, 0, 0);
+                ShowObjectTimeForCompleteLabel.Margin = new Thickness(250, 160, 0, 0);
+                ShowObjectTimeForCompleteText.Margin = new Thickness(marginTextX, 160, 0, 0);
+                ShowObjectReleaseYearLabel.Margin = new Thickness(250, 200, 0, 0);
+                ShowObjectReleaseYearText.Margin = new Thickness(marginTextX, 200, 0, 0);
+                ShowObjectIsCompleteLabel.Margin = new Thickness(250, 240, 0, 0);
+                ShowObjectIsCompleteText.Margin = new Thickness(marginTextX, 240, 0, 0);
+            }
+
+            if (selectedArchiveObject.type == ECollectionType.BOOK)
+            {
+                ShowObjectTimeForCompleteLabel.Visibility = Visibility.Hidden;
+                ShowObjectTimeForCompleteText.Visibility = Visibility.Hidden;
+                ShowObjectReleaseYearLabel.Margin = new Thickness(250, 200, 0, 0);
+                ShowObjectReleaseYearText.Margin = new Thickness(marginTextX, 200, 0, 0);
+                ShowObjectIsCompleteLabel.Margin = new Thickness(250, 240, 0, 0);
+                ShowObjectIsCompleteText.Margin = new Thickness(marginTextX, 240, 0, 0);
             }
 
             ShowObjectTimeForCompleteText.Content = selectedArchiveObject.timeForComplete.ToString();
@@ -73,7 +83,7 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.language == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
             }
@@ -91,16 +101,16 @@ namespace ArchiveManager.Windows
             switch (selectedArchiveObject.type)
             {
                 case ECollectionType.BOOK:
-                    ShowObjectCreatorText.Content = "Author";
+                    ShowObjectCreatorLabel.Content = "Author";
                     break;
                 case ECollectionType.FILM:
-                    ShowObjectCreatorText.Content = "Director";
+                    ShowObjectCreatorLabel.Content = "Director";
                     break;
                 case ECollectionType.GAME:
-                    ShowObjectCreatorText.Content = "Developer Studio";
+                    ShowObjectCreatorLabel.Content = "Developer Studio";
                     break;
                 default:
-                    ShowObjectCreatorText.Content = "Author";
+                    ShowObjectCreatorLabel.Content = "Author";
                     break;
             }
             ShowObjectTimeForCompleteLabel.Content = "Time For Complete";
@@ -117,16 +127,16 @@ namespace ArchiveManager.Windows
             switch (selectedArchiveObject.type)
             {
                 case ECollectionType.BOOK:
-                    ShowObjectCreatorText.Content = "Автор";
+                    ShowObjectCreatorLabel.Content = "Автор";
                     break;
                 case ECollectionType.FILM:
-                    ShowObjectCreatorText.Content = "Режиссёр";
+                    ShowObjectCreatorLabel.Content = "Режиссёр";
                     break;
                 case ECollectionType.GAME:
-                    ShowObjectCreatorText.Content = "Студия разработчик";
+                    ShowObjectCreatorLabel.Content = "Студия разработчик";
                     break;
                 default:
-                    ShowObjectCreatorText.Content = "Автор";
+                    ShowObjectCreatorLabel.Content = "Автор";
                     break;
             }
             ShowObjectTimeForCompleteLabel.Content = "Время завершения";
