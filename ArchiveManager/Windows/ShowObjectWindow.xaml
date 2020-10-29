@@ -5,24 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArchiveManager.Windows"
         mc:Ignorable="d"
-        Title="Show Object Window" Height="450" Width="800">
+        Title="Show Object Window" Height="450" Width="800"
+        Background="#2a475e" Foreground="White">
     <Grid>
-        <Image Name="ShowObjectImage" HorizontalAlignment="Left" Height="180" Margin="36,28,0,0" VerticalAlignment="Top" Width="182"/>
-        <Label Name="ShowObjectNameLabel" Content="Name" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectNameText" Content="Name" HorizontalAlignment="Left" Margin="365,40,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectScoreLabel" Content="Score" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectScoreText" Content="Score" HorizontalAlignment="Left" Margin="365,80,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectGenreText" Content="Genre" HorizontalAlignment="Left" Margin="365,120,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectCreatorLabel" Content="Creator" HorizontalAlignment="Left" Margin="250,160,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectCreatorText" Content="Creator" HorizontalAlignment="Left" Margin="365,160,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectTimeForCompleteLabel" Content="Time For Complete" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectTimeForCompleteText" Content="Time For Complete" HorizontalAlignment="Left" Margin="365,200,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectReleaseYearLabel" Content="Release Year" HorizontalAlignment="Left" Margin="250,240,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectReleaseYearText" Content="Release Year" HorizontalAlignment="Left" Margin="365,240,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectPlatformLabel" Content="Platform" HorizontalAlignment="Left" Margin="250,280,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectPlatformText" Content="Platform" HorizontalAlignment="Left" Margin="365,280,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectIsCompleteLabel" Content="Is Complete" HorizontalAlignment="Left" Margin="250,320,0,0" VerticalAlignment="Top"/>
-        <Label Name="ShowObjectIsCompleteText" Content="Is Complete" HorizontalAlignment="Left" Margin="365,320,0,0" VerticalAlignment="Top"/>
+        <Image Name="ShowObjectImage" HorizontalAlignment="Left" Height="318" Margin="36,28,0,0" VerticalAlignment="Top" Width="200"/>
+        <Label Name="ShowObjectNameLabel" Content="Name" HorizontalAlignment="Left" Margin="250,40,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectNameText" Content="Name" HorizontalAlignment="Left" Margin="365,40,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectScoreLabel" Content="Score" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectScoreText" Content="Score" HorizontalAlignment="Left" Margin="365,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectGenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectGenreText" Content="Genre" HorizontalAlignment="Left" Margin="365,120,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectCreatorLabel" Content="Creator" HorizontalAlignment="Left" Margin="250,160,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectCreatorText" Content="Creator" HorizontalAlignment="Left" Margin="365,160,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectTimeForCompleteLabel" Content="Time For Complete" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectTimeForCompleteText" Content="Time For Complete" HorizontalAlignment="Left" Margin="365,200,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectReleaseYearLabel" Content="Release Year" HorizontalAlignment="Left" Margin="250,240,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectReleaseYearText" Content="Release Year" HorizontalAlignment="Left" Margin="365,240,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectPlatformLabel" Content="Platform" HorizontalAlignment="Left" Margin="250,280,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectPlatformText" Content="Platform" HorizontalAlignment="Left" Margin="365,280,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectIsCompleteLabel" Content="Is Complete" HorizontalAlignment="Left" Margin="250,320,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Name="ShowObjectIsCompleteText" Content="Is Complete" HorizontalAlignment="Left" Margin="365,320,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Window>

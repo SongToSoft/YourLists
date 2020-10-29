@@ -4,21 +4,70 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="ArchiveManager"
+        Title="Archive Manager"
+        WindowTitleBrush="#1b2838"
         Height="500"
         Width="1300"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
-        Background="White"
+        Background="#2a475e"
         mc:Ignorable="d">
+    
+    <Window.Effect>
+        <DropShadowEffect Opacity="0.5"/>
+    </Window.Effect>
+    
+    <Window.Resources>
+        
+        <!--<Style TargetType="{x:Type TabItem}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="Orange"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="False">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>-->
+
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid Name="Panel">
+                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#66c0f4" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="Background" Value="#66c0f4" />
+                                <Setter Property="Foreground" Value="#66c0f4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    
     <Grid>
-        <TabControl Margin="0,25,0,0">
-            <TabItem Name="AnimesTabItem" Header="Animes/Cartoons">
-                <ListView Name="AnimeListView" Margin="0,0,-5,-3" MouseDoubleClick="AnimeListView_MouseDoubleClick">
+        <TabControl Margin="0,25,0,0" Background="#2a475e">
+            <TabItem Name="AnimesTabItem" Header="Animes/Cartoons" IsSelected="true" Background="#2a475e">
+                <ListView Name="AnimeListView" Margin="0,0,-5,-3" MouseDoubleClick="AnimeListView_MouseDoubleClick" Background="#2a475e" Foreground="White">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Delete" Click="DeleteAnimeObjectButton_Click"/>
-                            <MenuItem Header="Change" Click="ChangeAnimeObjectButton_Click"/>
+                            <MenuItem Header="Delete" Click="DeleteAnimeObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
+                            <MenuItem Header="Change" Click="ChangeAnimeObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
@@ -41,12 +90,12 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Name="BooksTabItem" Header="Books">
-                <ListView Name="BookListView" Margin="0,0,-5,-3" MouseDoubleClick="BookListView_MouseDoubleClick">
+            <TabItem Name="BooksTabItem" Header="Books" Background="#2a475e">
+                <ListView Name="BookListView" Margin="0,0,-5,-3" MouseDoubleClick="BookListView_MouseDoubleClick" Background="#2a475e" Foreground="White">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Delete" Click="DeleteBookObjectButton_Click"/>
-                            <MenuItem Header="Change" Click="ChangeBookObjectButton_Click"/>
+                            <MenuItem Header="Delete" Click="DeleteBookObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
+                            <MenuItem Header="Change" Click="ChangeBookObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/> 
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
@@ -70,12 +119,12 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Name="FilmsTabItem" Header="Films">
-                <ListView Name="FilmListView" Margin="0,0,-5,-3" MouseDoubleClick="FilmListView_MouseDoubleClick">
+            <TabItem Name="FilmsTabItem" Header="Films" Background="#2a475e">
+                <ListView Name="FilmListView" Margin="0,0,-5,-3" MouseDoubleClick="FilmListView_MouseDoubleClick" Background="#2a475e" Foreground="White">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Delete" Click="DeleteFilmObjectButton_Click"/>
-                            <MenuItem Header="Change" Click="ChangeFilmObjectButton_Click"/>
+                            <MenuItem Header="Delete" Click="DeleteFilmObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
+                            <MenuItem Header="Change" Click="ChangeFilmObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
@@ -99,12 +148,12 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Name="GamesTabItem" Header="Games">
-                <ListView Name="GameListView" Margin="0,0,-5,-3" MouseDoubleClick="GameListView_MouseDoubleClick">
+            <TabItem Name="GamesTabItem" Header="Games" Background="#2a475e">
+                <ListView Name="GameListView" Margin="0,0,-5,-3" MouseDoubleClick="GameListView_MouseDoubleClick" Background="#2a475e" Foreground="White">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Delete" Click="DeleteGameObjectButton_Click"/>
-                            <MenuItem Header="Change" Click="ChangeGameObjectButton_Click"/>
+                            <MenuItem Header="Delete" Click="DeleteGameObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
+                            <MenuItem Header="Change" Click="ChangeGameObjectButton_Click" Background="#2a475e" Foreground="#66c0f4"/>
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
@@ -129,7 +178,7 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-            <TabItem Name="AddObjectTabItem" Header="Add New Object">
+            <TabItem Name="AddObjectTabItem" Header="Add New Object" Background="#2a475e">
                 <Canvas>
                     <ComboBox Name="AddObjectType" Height="24" Canvas.Left="150" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged">
                         <TextBlock>Anime</TextBlock>
@@ -137,36 +186,36 @@
                         <TextBlock>Film</TextBlock>
                         <TextBlock>Game</TextBlock>
                     </ComboBox>
-                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="700" Canvas.Top="90" Width="75" Height="25" Click="AddObjectButton_Click"/>
-                    <Button Name="AddObjectLoadImageButton" Content="Load Image" Canvas.Left="700" Canvas.Top="130" Width="75" Height="25" Click="AddObjectImageButton_Click"/>
+                    <Button Name="AddObjectButton" Content="Add" Canvas.Left="700" Canvas.Top="90" Width="75" Height="25" Click="AddObjectButton_Click" Background="#66c0f4" Foreground="#171a21"/>
+                    <Button Name="AddObjectLoadImageButton" Content="Load Image" Canvas.Left="700" Canvas.Top="130" Width="75" Height="25" Click="AddObjectImageButton_Click" Background="#66c0f4" Foreground="#171a21"/>
                     <TextBox Name="AddObjectName" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="500"/>
                     <TextBox Name="AddObjectScore" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350"/>
                     <TextBox Name="AddObjectGenre" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350"/>
                     <TextBox Name="AddObjectTimeForComplete" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350"/>
                     <TextBox Name="AddObjectReleaseYear" Height="25" Canvas.Left="150" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350"/>
-                    <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="150" Canvas.Top="290"/>
+                    <CheckBox Name="AddObjectIsCompleted" Content="Is Completed" Canvas.Left="150" Canvas.Top="290" Foreground="White"/>
                     <TextBox Name="AddObjectCreator" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350" Visibility="Hidden"/>
                     <TextBox Name="AddObjectPlatform" Height="25" Canvas.Left="700" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350" Visibility="Hidden"/>
-                    <Label Name="AddObjectSelectTypeLabel" Content="Select Type" Canvas.Left="40" Canvas.Top="50"/>
-                    <Label Name="AddObjectNameLabel" Content="Name" Canvas.Left="40" Canvas.Top="90"/>
-                    <Label Name="AddObjectScoreLabel" Content="Score" Canvas.Left="40" Canvas.Top="130"/>
-                    <Label Name="AddObjectGenreLabel" Content="Genre" Canvas.Left="40" Canvas.Top="170"/>
-                    <Label Name="AddObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="40" Canvas.Top="210"/>
-                    <Label Name="AddObjectReleaseYearLabel" Content="Release Year" Canvas.Left="40" Canvas.Top="250"/>
-                    <Label Name="AddObjectPlatformLabel" Content="Platform" Canvas.Left="620" Canvas.Top="250" Visibility="Hidden"/>
-                    <Label Name="AddObjectCreatorLabel" Content="Creator" Canvas.Left="620" Canvas.Top="209" Visibility="Hidden"/>
-                    <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="680" Canvas.Top="160" Width="115" Visibility="Hidden"/>
+                    <Label Name="AddObjectSelectTypeLabel" Content="Select Type" Canvas.Left="40" Canvas.Top="50" Foreground="White"/>
+                    <Label Name="AddObjectNameLabel" Content="Name" Canvas.Left="40" Canvas.Top="90" Foreground="White"/>
+                    <Label Name="AddObjectScoreLabel" Content="Score" Canvas.Left="40" Canvas.Top="130" Foreground="White"/>
+                    <Label Name="AddObjectGenreLabel" Content="Genre" Canvas.Left="40" Canvas.Top="170" Foreground="White"/>
+                    <Label Name="AddObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="40" Canvas.Top="210" Foreground="White"/>
+                    <Label Name="AddObjectReleaseYearLabel" Content="Release Year" Canvas.Left="40" Canvas.Top="250" Foreground="White"/>
+                    <Label Name="AddObjectPlatformLabel" Content="Platform" Canvas.Left="620" Canvas.Top="250" Visibility="Hidden" Foreground="White"/>
+                    <Label Name="AddObjectCreatorLabel" Content="Creator" Canvas.Left="620" Canvas.Top="209" Visibility="Hidden" Foreground="White"/>
+                    <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="680" Canvas.Top="160" Width="115" Visibility="Hidden" Foreground="White"/>
                 </Canvas>
             </TabItem>
         </TabControl>
-        <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Name="MenuItemFile" Header="File" Height="25" Width="40">
-                <MenuItem Name="MenuItemChoseLanguage" Header="Chose Language" >
-                    <MenuItem Name="MenuItemChoseLanguage_English" Header="English" Click="MenuItem_ChoseEnglistLanguage"></MenuItem>
-                    <MenuItem Name="MenuItemChoseLanguage_Russian" Header="Russian" Click="MenuItem_ChoseRussianLanguage"></MenuItem>
+        <Menu Height="25" VerticalAlignment="Top" Background="#2a475e" Foreground="White">
+            <MenuItem Name="MenuItemFile" Header="File" Height="25" Width="40" Foreground="White">
+                <MenuItem Name="MenuItemChoseLanguage" Header="Chose Language" Background="#2a475e">
+                    <MenuItem Name="MenuItemChoseLanguage_English" Header="English" Click="MenuItem_ChoseEnglistLanguage" Background="#2a475e" Foreground="White"></MenuItem>
+                    <MenuItem Name="MenuItemChoseLanguage_Russian" Header="Russian" Click="MenuItem_ChoseRussianLanguage" Background="#2a475e" Foreground="White"></MenuItem>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Name="MenuItemExit" Header="Exit" Click="MenuItem_Exit"></MenuItem>
+                <MenuItem Name="MenuItemExit" Header="Exit" Click="MenuItem_Exit" Background="#2a475e"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>
