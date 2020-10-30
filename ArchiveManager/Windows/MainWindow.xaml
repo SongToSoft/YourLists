@@ -16,21 +16,8 @@
     <Window.Effect>
         <DropShadowEffect Opacity="0.5"/>
     </Window.Effect>
-    
+
     <Window.Resources>
-        
-        <!--<Style TargetType="{x:Type TabItem}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Background" Value="Orange"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="False">
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Background" Value="Red"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>-->
 
         <Style TargetType="TabItem">
             <Setter Property="Template">
@@ -45,13 +32,16 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#66c0f4" />
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
-                                <Setter Property="Background" Value="#66c0f4" />
                                 <Setter Property="Foreground" Value="#66c0f4" />
                             </Trigger>
+                            
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DarkGoldenrod"/>
+                            </Trigger>-->
+                            
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -209,7 +199,7 @@
             </TabItem>
         </TabControl>
         <Menu Height="25" VerticalAlignment="Top" Background="#2a475e" Foreground="White">
-            <MenuItem Name="MenuItemFile" Header="File" Height="25" Width="40" Foreground="White">
+            <MenuItem Name="MenuItemFile" Header="File" Height="25" Width="40" Foreground="#66c0f4">
                 <MenuItem Name="MenuItemChoseLanguage" Header="Chose Language" Background="#2a475e">
                     <MenuItem Name="MenuItemChoseLanguage_English" Header="English" Click="MenuItem_ChoseEnglistLanguage" Background="#2a475e" Foreground="White"></MenuItem>
                     <MenuItem Name="MenuItemChoseLanguage_Russian" Header="Russian" Click="MenuItem_ChoseRussianLanguage" Background="#2a475e" Foreground="White"></MenuItem>
