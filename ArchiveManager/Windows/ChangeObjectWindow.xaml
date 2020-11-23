@@ -1,30 +1,31 @@
-﻿<Window x:Class="ArchiveManager.Windows.ChangeObjectWindow"
+﻿<mah:MetroWindow x:Class="ArchiveManager.Windows.ChangeObjectWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ArchiveManager"
         mc:Ignorable="d"
         Title="Change Object" Height="550" Width="700"
-        Background="#2a475e" Foreground="White">
+        Background="#252631"
+        WindowTitleBrush="#6c43af">
     <Canvas>
-        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="160" Canvas.Top="430" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5" Background="#66c0f4" Foreground="#171a21"/>
-        <Button Name="ChangeObjectImageButton" Content="Load Image" Canvas.Left="160" Canvas.Top="370" Width="75" Height="24" Click="ChangeObjectImageButton_Click" Background="#66c0f4" Foreground="#171a21"/>
-        <TextBox Name="ChangeObjectName" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="50" Width="500"/>
-        <TextBox Name="ChangeObjectScore" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="350"/>
-        <TextBox Name="ChangeObjectGenre" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350"/>
-        <TextBox Name="ChangeObjectCreator" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350"/>
-        <TextBox Name="ChangeObjectTimeForComplete" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350"/>
-        <TextBox Name="ChangeObjectReleaseYear" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350"/>
-        <TextBox Name="ChangeObjectPlatform" Height="25" Canvas.Left="160" TextWrapping="Wrap" Text="" Canvas.Top="290" Width="350" />
-        <CheckBox Name="ChangeObjectIsCompleted" Content="Is Completed" Canvas.Left="156" Canvas.Top="330" Foreground="White"/>
-        <Label Name="ChangeObjectNameLabel" Content="Name" Canvas.Left="30" Canvas.Top="50" Foreground="White"/>
-        <Label Name="ChangeObjectScoreLabel" Content="Score" Canvas.Left="30" Canvas.Top="90" Foreground="White"/>
-        <Label Name="ChangeObjectGenreLabel" Content="Genre" Canvas.Left="30" Canvas.Top="130" Foreground="White"/>
-        <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="30" Canvas.Top="170" Foreground="White"/>
-        <Label Name="ChangeObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="30" Canvas.Top="210" Foreground="White"/>
-        <Label Name="ChangeObjectReleaseYearLabel" Content="Release Year" Canvas.Left="30" Canvas.Top="250" Foreground="White"/>
-        <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="30" Canvas.Top="290" Foreground="White"/>
-        <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="155" Canvas.Top="399" Width="115" Foreground="White"/>
+        <Button Name="ChangeObjectButton" Content="Change" Canvas.Left="175" Canvas.Top="430" Width="75" Height="23" Click="ChangeObjectButton_Click" RenderTransformOrigin="0.5,0.5" Background="#6c43af" Foreground="#63b989"/>
+        <Button Name="ChangeObjectImageButton" Content="Load Image" Canvas.Left="175" Canvas.Top="370" Width="105" Height="24" Click="ChangeObjectImageButton_Click" Background="#6c43af" Foreground="#63b989"/>
+        <TextBox Name="ChangeObjectName" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="50" Width="500" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectScore" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="90" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectGenre" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectCreator" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="170" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectTimeForComplete" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="210" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectReleaseYear" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="250" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <TextBox Name="ChangeObjectPlatform" Height="25" Canvas.Left="175" TextWrapping="Wrap" Text="" Canvas.Top="290" Width="350" Foreground="#63b989" Background="#6c43af"/>
+        <CheckBox Name="ChangeObjectIsCompleted" Content="Is Completed" Canvas.Left="175" Canvas.Top="330" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectNameLabel" Content="Name" Canvas.Left="30" Canvas.Top="50" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectScoreLabel" Content="Score" Canvas.Left="30" Canvas.Top="90" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectGenreLabel" Content="Genre" Canvas.Left="30" Canvas.Top="130" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectCreatorLabel" Content="Creator" Canvas.Left="30" Canvas.Top="170" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectTimeForCompleteLabel" Content="Time For Complete" Canvas.Left="30" Canvas.Top="210" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectReleaseYearLabel" Content="Release Year" Canvas.Left="30" Canvas.Top="250" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectPlatformLabel" Content="Platform" Canvas.Left="30" Canvas.Top="290" Foreground="#247aa2"/>
+        <Label Name="ChangeObjectImageLabel" Content="Image was selected" Canvas.Left="175" Canvas.Top="399" Width="175" Foreground="#247aa2"/>
     </Canvas>
-</Window>
+</mah:MetroWindow>

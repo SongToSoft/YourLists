@@ -3,7 +3,6 @@ C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\ArchiveMa
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\bin\Debug\ArchiveManager.pdb
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\App.g.cs
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager_MarkupCompile.cache
-C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager_MarkupCompile.lref
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.g.resources
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.Properties.Resources.resources
 C:\Users\Dima\Documents\GitHub\ArchiveManager\ArchiveManager\obj\Debug\ArchiveManager.csproj.GenerateResource.cache

@@ -1,24 +1,14 @@
 ﻿using ArchiveManager.Objects;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ArchiveManager.Windows
 {
-    public partial class ChangeObjectWindow : Window, MyWindowInterface
+    public partial class ChangeObjectWindow : MyWindowInterface
     {
         private ArchiveObject selectedArchiveObject;
         private string objectImage = "";
@@ -26,6 +16,10 @@ namespace ArchiveManager.Windows
         public ChangeObjectWindow(ArchiveObject archiveObject)
         {
             InitializeComponent();
+
+            this.FontFamily = new FontFamily("Arial");
+            this.FontSize = 14;
+
             selectedArchiveObject = archiveObject;
             SetLanguage();
             SetValuesInFields();
@@ -231,14 +225,12 @@ namespace ArchiveManager.Windows
             if (StaticContent.setting.language == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
-                ChangeObjectImageButton.Width = 75;
-                ChangeObjectImageLabel.Width = 115;
+                ChangeObjectImageButton.Width = 105;
             }
             else
             {
                 SetRuLanguage();
-                ChangeObjectImageButton.Width = 140;
-                ChangeObjectImageLabel.Width = 140;
+                ChangeObjectImageButton.Width = 160;
             }
         }
 
@@ -266,7 +258,7 @@ namespace ArchiveManager.Windows
                     ChangeObjectCreatorLabel.Content = "Author";
                     break;
             }
-            ChangeObjectTimeForCompleteLabel.Content = "Time For Complete";
+            ChangeObjectTimeForCompleteLabel.Content = "Duration";
             ChangeObjectReleaseYearLabel.Content = "Release Year";
             ChangeObjectPlatformLabel.Content = "Platform";
 
@@ -298,7 +290,7 @@ namespace ArchiveManager.Windows
                     ChangeObjectCreatorLabel.Content = "Автор";
                     break;
             }
-            ChangeObjectTimeForCompleteLabel.Content = "Время завершения";
+            ChangeObjectTimeForCompleteLabel.Content = "Продолжительность";
             ChangeObjectReleaseYearLabel.Content = "Год выпуска";
             ChangeObjectPlatformLabel.Content = "Платформа";
 

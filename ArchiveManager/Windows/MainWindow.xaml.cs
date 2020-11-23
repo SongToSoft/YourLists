@@ -4,8 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using MahApps.Metro.Controls;
-using System.Drawing;
+using System.Windows.Media;
 
 namespace ArchiveManager.Windows
 {
@@ -16,6 +15,9 @@ namespace ArchiveManager.Windows
         public MainWindow()
         {
             InitializeComponent();
+
+            this.FontFamily = new FontFamily("Arial");
+            this.FontSize = 14;
 
             LoadAnimeList();
             LoadBookList();
@@ -153,7 +155,7 @@ namespace ArchiveManager.Windows
             }
             catch (FormatException)
             {
-                Console.WriteLine("Incorrect Time For Complete on Add");
+                Console.WriteLine("Incorrect Duration on Add");
             }
             try
             {
@@ -446,8 +448,7 @@ namespace ArchiveManager.Windows
                 AddObjectReleaseYearLabel.SetValue(Canvas.LeftProperty, 40.0);
 
 
-                AddObjectLoadImageButton.SetValue(Canvas.LeftProperty, 700.0);
-                AddObjectLoadImageButton.Width = 75.0;
+                AddObjectLoadImageButton.Width = 100.0;
 
                 AddObjectImageLabel.Width = 115;
                 AddObjectImageLabel.SetValue(Canvas.LeftProperty, 680.0);
@@ -455,15 +456,14 @@ namespace ArchiveManager.Windows
             else
             {
                 SetRuLanguage();
-                AddObjectSelectTypeLabel.SetValue(Canvas.LeftProperty, 20.0);
-                AddObjectNameLabel.SetValue(Canvas.LeftProperty, 20.0);
-                AddObjectScoreLabel.SetValue(Canvas.LeftProperty, 20.0);
-                AddObjectGenreLabel.SetValue(Canvas.LeftProperty, 20.0);
-                AddObjectTimeForCompleteLabel.SetValue(Canvas.LeftProperty, 20.0);
-                AddObjectReleaseYearLabel.SetValue(Canvas.LeftProperty, 20.0);
+                AddObjectSelectTypeLabel.SetValue(Canvas.LeftProperty, 10.0);
+                AddObjectNameLabel.SetValue(Canvas.LeftProperty, 10.0);
+                AddObjectScoreLabel.SetValue(Canvas.LeftProperty, 10.0);
+                AddObjectGenreLabel.SetValue(Canvas.LeftProperty, 10.0);
+                AddObjectTimeForCompleteLabel.SetValue(Canvas.LeftProperty, 10.0);
+                AddObjectReleaseYearLabel.SetValue(Canvas.LeftProperty, 10.0);
 
-                AddObjectLoadImageButton.SetValue(Canvas.LeftProperty, 673.0);
-                AddObjectLoadImageButton.Width = 129.0;
+                AddObjectLoadImageButton.Width = 160.0;
 
                 AddObjectImageLabel.Width = 175.0;
                 AddObjectImageLabel.SetValue(Canvas.LeftProperty, 650.0);
@@ -521,13 +521,14 @@ namespace ArchiveManager.Windows
             AddObjectNameLabel.Content = "Name";
             AddObjectScoreLabel.Content = "Score";
             AddObjectGenreLabel.Content = "Genre";
-            AddObjectTimeForCompleteLabel.Content = "Time For complete";
+            AddObjectTimeForCompleteLabel.Content = "Duration";
             AddObjectReleaseYearLabel.Content = "Release Year";
             AddObjectPlatformLabel.Content = "Platform";
             AddObjectCreatorLabel.Content = "Creator";
             AddObjectImageLabel.Content = "Image was selected";
             AddObjectButton.Content = "Add";
             AddObjectLoadImageButton.Content = "Load Imagе";
+            AddObjectIsCompleted.Content = "Is Completed";
         }
 
         public void SetRuLanguage()
@@ -580,13 +581,14 @@ namespace ArchiveManager.Windows
             AddObjectNameLabel.Content = "Название";
             AddObjectScoreLabel.Content = "Оценка";
             AddObjectGenreLabel.Content = "Жанр";
-            AddObjectTimeForCompleteLabel.Content = "Время на завершение";
+            AddObjectTimeForCompleteLabel.Content = "Продолжительность";
             AddObjectReleaseYearLabel.Content = "Дата выхода";
             AddObjectPlatformLabel.Content = "Платформа";
             AddObjectCreatorLabel.Content = "Автор";
             AddObjectImageLabel.Content = "Изображение было выбрано";
             AddObjectButton.Content = "Добавить";
             AddObjectLoadImageButton.Content = "Выбрать изображение";
+            AddObjectIsCompleted.Content = "Закончено";
         }
     }
 }

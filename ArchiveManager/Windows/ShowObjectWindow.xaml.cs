@@ -1,27 +1,21 @@
 ﻿using ArchiveManager.Objects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ArchiveManager.Windows
 {
-    public partial class ShowObjectWindow : Window, MyWindowInterface
+    public partial class ShowObjectWindow : MyWindowInterface
     {
         private ArchiveObject selectedArchiveObject;
-        private int marginTextX = 365;
+        private int marginTextX = 390;
         public ShowObjectWindow(ArchiveObject _archiveObject)
         {
             InitializeComponent();
+
+            this.FontFamily = new FontFamily("Arial");
+            this.FontSize = 14;
+
             selectedArchiveObject = _archiveObject;
             SetValuesInFields();
 
@@ -113,7 +107,7 @@ namespace ArchiveManager.Windows
                     ShowObjectCreatorLabel.Content = "Author";
                     break;
             }
-            ShowObjectTimeForCompleteLabel.Content = "Time For Complete";
+            ShowObjectTimeForCompleteLabel.Content = "Duration";
             ShowObjectReleaseYearLabel.Content = "Release Year";
             ShowObjectPlatformLabel.Content = "Platforma";
             ShowObjectIsCompleteLabel.Content = "Is Complete";
@@ -139,7 +133,7 @@ namespace ArchiveManager.Windows
                     ShowObjectCreatorLabel.Content = "Автор";
                     break;
             }
-            ShowObjectTimeForCompleteLabel.Content = "Время завершения";
+            ShowObjectTimeForCompleteLabel.Content = "Продолжительность";
             ShowObjectReleaseYearLabel.Content = "Год выпуска";
             ShowObjectPlatformLabel.Content = "Платформа";
             ShowObjectIsCompleteLabel.Content = "Закончен";
