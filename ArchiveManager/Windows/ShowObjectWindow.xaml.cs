@@ -77,7 +77,7 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.setting.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
             }

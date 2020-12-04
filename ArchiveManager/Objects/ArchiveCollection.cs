@@ -49,8 +49,15 @@ namespace ArchiveManager.Objects
                     //imagesPath = "DataBase/Images/Games/";
                     break;
             }
-            var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(dataBasePath);
-            archiveObjects = collection.GetArchiveObjects();
+            if (File.Exists(dataBasePath))
+            {
+                var collection = SerializationJsonSystem.GetValue<ArchiveCollection>(dataBasePath);
+                archiveObjects = collection.GetArchiveObjects();
+            }
+            else
+            {
+                SerializationJsonSystem.SaveValue<ArchiveCollection>(dataBasePath, this, System.IO.FileMode.CreateNew);
+            }
             CheckImages();
         }
 

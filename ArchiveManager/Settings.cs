@@ -18,32 +18,54 @@ namespace ArchiveManager
     class Settings
     {
         [DataMember]
-        public ELanguage language = ELanguage.ENGLISH;
+        private ELanguage language = ELanguage.ENGLISH;
         private string path = @"/settings.json";
+        private string fullpath;
 
         public Settings()
         {
-            GetSettings();
+            fullpath = Path.GetFullPath(Directory.GetCurrentDirectory() + path);
+            List<string> folders = new List<string> { "/DataBase", "/DataBase/Images", "/DataBase/Images", "/DataBase/Images/Animes", "/DataBase/Images/Books", "/DataBase/Images/Films", "/DataBase/Images/Games" }; 
+            for (int i = 0; i < folders.Count; ++i)
+            {
+                if (!Directory.Exists(Path.GetFullPath(Directory.GetCurrentDirectory() + folders[i])))
+                {
+                    Directory.CreateDirectory(Path.GetFullPath(Directory.GetCurrentDirectory() + folders[i]));
+                    Console.WriteLine(folders[i] + " directory dont exist");
+                }
+            }
         }
 
         public void GetSettings()
         {
-            string fullpath = Path.GetFullPath(Directory.GetCurrentDirectory() + path);
             Console.WriteLine(fullpath);
             if (File.Exists(fullpath))
             {
+                var settings = SerializationJsonSystem.GetValue<Settings>(fullpath);
+                language = settings.language;
                 Console.WriteLine("Settings file exist");
             }
             else
             {
                 Console.WriteLine("Settings file not exist");
-                File.Create(fullpath);
+                SaveSettings();
             }
         }
 
         public void SaveSettings()
         {
+            SerializationJsonSystem.SaveValue<Settings>(fullpath, this, FileMode.CreateNew);
+        }
 
+        public ELanguage GetLanguage()
+        {
+            return language;
+        }
+
+        public void SetLanguage(ELanguage _language)
+        {
+            language = _language;
+            SaveSettings();
         }
 
     }

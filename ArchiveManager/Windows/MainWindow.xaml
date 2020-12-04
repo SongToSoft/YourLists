@@ -72,7 +72,7 @@
     
     <Grid>
         <TabControl Margin="0,25,0,0" Background="#2a475e">
-            <TabItem Name="AnimesTabItem" Header="Animes/Cartoons" IsSelected="true" Background="#2a475e">
+            <TabItem Name="AnimesTabItem" Header="Animes" IsSelected="true" Background="#2a475e">
                 <ListView Name="AnimeListView" Margin="0,0,-5,-3" MouseDoubleClick="AnimeListView_MouseDoubleClick" Background="#252631" Foreground="#247aa2">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -190,14 +190,14 @@
             </TabItem>
             <TabItem Name="AddObjectTabItem" Header="Add New Object" Background="#252631">
                 <Canvas Background="#252631">
-                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="150" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged" Foreground="#171a21" Background="#6c43af" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
+                    <ComboBox Name="AddObjectType" Height="24" Canvas.Left="150" Canvas.Top="50" Width="200" SelectionChanged="AddObjectType_SelectionChanged" Foreground="#63b989" Background="#6c43af" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}">
                         <ComboBox.ItemContainerStyle>
                             <Style TargetType="ComboBoxItem">
                                 <Setter Property="Background" Value="#6c43af"/>
                                 <Setter Property="BorderBrush" Value="#6c43af"/>
                             </Style>
                         </ComboBox.ItemContainerStyle>
-                        <TextBlock>Anime/Cartoons</TextBlock>
+                        <TextBlock>Anime</TextBlock>
                         <TextBlock>Book</TextBlock>
                         <TextBlock>Film</TextBlock>
                         <TextBlock>Game</TextBlock>
@@ -220,7 +220,7 @@
                     <Label Name="AddObjectReleaseYearLabel" Content="Release Year" Canvas.Left="40" Canvas.Top="250" Foreground="#247aa2"/>
                     <Label Name="AddObjectPlatformLabel" Content="Platform" Canvas.Left="620" Canvas.Top="250" Visibility="Hidden" Foreground="#247aa2"/>
                     <Label Name="AddObjectCreatorLabel" Content="Creator" Canvas.Left="620" Canvas.Top="209" Visibility="Hidden" Foreground="#247aa2"/>
-                    <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="680" Canvas.Top="160" Width="115" Visibility="Hidden" Foreground="#247aa2"/>
+                    <Label Name="AddObjectImageLabel" Content="Image was selected" Canvas.Left="700" Canvas.Top="160" Width="150" Visibility="Hidden" Foreground="#247aa2"/>
                 </Canvas>
             </TabItem>
         </TabControl>

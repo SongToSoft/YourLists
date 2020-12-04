@@ -22,12 +22,19 @@ namespace ArchiveManager
     {
         static public ArchiveCollection animeCollection, bookCollection, filmCollection, gameCollection;
         static public ListView animeListView, bookListView, filmListView, gameListView;
-        static public List<MyWindowInterface> openWindows = new List<MyWindowInterface>();
-        static public Settings setting = new Settings();
+        static public List<MyWindowInterface> openWindows;
+        static public Settings setting;
+
+        static public void Init()
+        {
+            openWindows = new List<MyWindowInterface>();
+            setting = new Settings();
+            setting.GetSettings();
+        }
 
         static public string GetErrorNameText()
         {
-            if (setting.language == ELanguage.ENGLISH)
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 return ("Incorect name, dont use /:*?<>|");
             }
@@ -37,9 +44,21 @@ namespace ArchiveManager
             }
         }
 
+        static public string GetDuplicateNameText()
+        {
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
+            {
+                return ("This name is already in use");
+            }
+            else
+            {
+                return ("Данное имя уже используется");
+            }
+        }
+
         static public string GetDisplayedScoreText()
         {
-            if (setting.language == ELanguage.ENGLISH)
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 return ("Score not defined");
             }
@@ -51,7 +70,7 @@ namespace ArchiveManager
 
         static public string GetFileAddMessage()
         {
-            if (setting.language == ELanguage.ENGLISH)
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 return (" was added");
             }
@@ -63,7 +82,7 @@ namespace ArchiveManager
 
         static public string GetFileExistAddMessage()
         {
-            if (setting.language == ELanguage.ENGLISH)
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 return (" already exist in collection");
             }
@@ -75,13 +94,25 @@ namespace ArchiveManager
 
         static public string GetChangeMessage()
         {
-            if (setting.language == ELanguage.ENGLISH)
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 return (" was changed");
             }
             else
             {
                 return (" был изменён");
+            }
+        }
+
+        static public string GetAddObjectWrongTypeMessage()
+        {
+            if (setting.GetLanguage() == ELanguage.ENGLISH)
+            {
+                return ("Object type not selected");
+            }
+            else
+            {
+                return ("Тип объекта не выбран");
             }
         }
     }

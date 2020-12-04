@@ -163,6 +163,11 @@ namespace ArchiveManager.Windows
             switch (type)
             {
                 case ECollectionType.ANIME:
+                    if (name != selectedArchiveObject.name)
+                    {
+                        if (CheckDuplicateName(name, StaticContent.animeCollection))
+                            break;
+                    }
                     StaticContent.animeListView.Items.Add(changeObject);
                     StaticContent.animeListView.Items.Remove(StaticContent.animeListView.SelectedItem);
 
@@ -172,6 +177,11 @@ namespace ArchiveManager.Windows
                     Close();
                     break;
                 case ECollectionType.BOOK:
+                    if (name != selectedArchiveObject.name)
+                    {
+                        if (CheckDuplicateName(name, StaticContent.bookCollection))
+                            break;
+                    }
                     StaticContent.bookListView.Items.Add(changeObject);
                     StaticContent.bookListView.Items.Remove(StaticContent.bookListView.SelectedItem);
 
@@ -182,6 +192,11 @@ namespace ArchiveManager.Windows
                     Close();
                     break;
                 case ECollectionType.FILM:
+                    if (name != selectedArchiveObject.name)
+                    {
+                        if (CheckDuplicateName(name, StaticContent.filmCollection))
+                            break;
+                    }
                     StaticContent.filmListView.Items.Add(changeObject);
                     StaticContent.filmListView.Items.Remove(StaticContent.filmListView.SelectedItem);
 
@@ -192,6 +207,11 @@ namespace ArchiveManager.Windows
                     Close();
                     break;
                 case ECollectionType.GAME:
+                    if (name != selectedArchiveObject.name)
+                    {
+                        if (CheckDuplicateName(name, StaticContent.gameCollection))
+                            break;
+                    }
                     changeObject.platform = ChangeObjectPlatform.Text;
 
                     StaticContent.gameListView.Items.Add(changeObject);
@@ -222,7 +242,7 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.setting.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
                 ChangeObjectImageButton.Width = 105;
@@ -301,6 +321,19 @@ namespace ArchiveManager.Windows
         {
             base.OnClosed(e);
             StaticContent.openWindows.Remove(this);
+        }
+
+        private bool CheckDuplicateName(string name, ArchiveCollection colection)
+        {
+            for (int i = 0; i < colection.GetArchiveObjects().Count; ++i)
+            {
+                if (name == colection.GetArchiveObjects()[i].name)
+                {
+                    MessageBox.Show(StaticContent.GetDuplicateNameText());
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

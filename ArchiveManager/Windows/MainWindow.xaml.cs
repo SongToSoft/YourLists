@@ -14,6 +14,8 @@ namespace ArchiveManager.Windows
 
         public MainWindow()
         {
+            StaticContent.Init();
+
             InitializeComponent();
 
             this.FontFamily = new FontFamily("Arial");
@@ -23,6 +25,8 @@ namespace ArchiveManager.Windows
             LoadBookList();
             LoadFilmList();
             LoadGameList();
+
+            SetLanguage();
         }
 
         private void SetDisplayedScore()
@@ -229,6 +233,10 @@ namespace ArchiveManager.Windows
                         break;
                 }
             }
+            else
+            {
+                MessageBox.Show(StaticContent.GetAddObjectWrongTypeMessage());
+            }
             ClearField();
         }
 
@@ -380,9 +388,9 @@ namespace ArchiveManager.Windows
 
         private void MenuItem_ChoseRussianLanguage(object sender, RoutedEventArgs e)
         {
-            if (StaticContent.setting.language != ELanguage.RUSSIAN)
+            if (StaticContent.setting.GetLanguage() != ELanguage.RUSSIAN)
             {
-                StaticContent.setting.language = ELanguage.RUSSIAN;
+                StaticContent.setting.SetLanguage(ELanguage.RUSSIAN);
                 SetLanguage();
                 for (int i = 0; i < StaticContent.openWindows.Count; ++i)
                 {
@@ -393,9 +401,9 @@ namespace ArchiveManager.Windows
 
         private void MenuItem_ChoseEnglistLanguage(object sender, RoutedEventArgs e)
         {
-            if (StaticContent.setting.language != ELanguage.ENGLISH)
+            if (StaticContent.setting.GetLanguage() != ELanguage.ENGLISH)
             {
-                StaticContent.setting.language = ELanguage.ENGLISH;
+                StaticContent.setting.SetLanguage(ELanguage.ENGLISH);
                 SetLanguage();
                 for (int i = 0; i < StaticContent.openWindows.Count; ++i)
                 {
@@ -437,7 +445,7 @@ namespace ArchiveManager.Windows
 
         public void SetLanguage()
         {
-            if (StaticContent.setting.language == ELanguage.ENGLISH)
+            if (StaticContent.setting.GetLanguage() == ELanguage.ENGLISH)
             {
                 SetEngLanguage();
                 AddObjectSelectTypeLabel.SetValue(Canvas.LeftProperty, 40.0);
@@ -450,8 +458,7 @@ namespace ArchiveManager.Windows
 
                 AddObjectLoadImageButton.Width = 100.0;
 
-                AddObjectImageLabel.Width = 115;
-                AddObjectImageLabel.SetValue(Canvas.LeftProperty, 680.0);
+                AddObjectImageLabel.Width = 150;
             }
             else
             {
@@ -465,8 +472,7 @@ namespace ArchiveManager.Windows
 
                 AddObjectLoadImageButton.Width = 160.0;
 
-                AddObjectImageLabel.Width = 175.0;
-                AddObjectImageLabel.SetValue(Canvas.LeftProperty, 650.0);
+                AddObjectImageLabel.Width = 210.0;
             }
             SetDisplayedScore();
         }
@@ -533,7 +539,7 @@ namespace ArchiveManager.Windows
 
         public void SetRuLanguage()
         {
-            AnimesTabItem.Header = "Аниме/Мультики";
+            AnimesTabItem.Header = "Аниме";
             BooksTabItem.Header = "Книги";
             FilmsTabItem.Header = "Фильмы";
             GamesTabItem.Header = "Игры";
