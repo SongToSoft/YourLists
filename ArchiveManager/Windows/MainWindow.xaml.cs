@@ -4,7 +4,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace ArchiveManager.Windows
 {
@@ -18,8 +17,8 @@ namespace ArchiveManager.Windows
 
             InitializeComponent();
 
-            this.FontFamily = new FontFamily("Arial");
-            this.FontSize = 14;
+            this.FontFamily = StaticContent.GetFont();
+            this.FontSize = StaticContent.GetFontSize();
 
             LoadAnimeList();
             LoadBookList();
@@ -242,80 +241,57 @@ namespace ArchiveManager.Windows
 
         private void DeleteAnimeObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                StaticContent.animeCollection.RemoveObject(selectedItem);
-                AnimeListView.Items.Remove(AnimeListView.SelectedItem);
-            }
+            DeleteObjectButton(AnimeListView, StaticContent.animeCollection);
         }
 
         private void DeleteBookObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = BookListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                StaticContent.bookCollection.RemoveObject(selectedItem);
-                BookListView.Items.Remove(BookListView.SelectedItem);
-            }
+            DeleteObjectButton(BookListView, StaticContent.bookCollection);
         }
 
         private void DeleteFilmObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                StaticContent.filmCollection.RemoveObject(selectedItem);
-                FilmListView.Items.Remove(FilmListView.SelectedItem);
-            }
+            DeleteObjectButton(FilmListView, StaticContent.filmCollection);
         }
 
         private void DeleteGameObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = GameListView.SelectedItem as ArchiveObject;
+            DeleteObjectButton(GameListView, StaticContent.gameCollection);
+        }
+
+        private void DeleteObjectButton(ListView list, ArchiveCollection collection)
+        {
+            var selectedItem = list.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
-                StaticContent.gameCollection.RemoveObject(selectedItem);
-                GameListView.Items.Remove(GameListView.SelectedItem);
+                collection.RemoveObject(selectedItem);
+                list.Items.Remove(list.SelectedItem);
             }
         }
 
         private void ChangeAnimeObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = AnimeListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
-                changeObjectWindow.Show();
-                StaticContent.openWindows.Add(changeObjectWindow);
-            }
+            ChangeObjectButton(AnimeListView);
         }
 
         private void ChangeBookObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = BookListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
-                changeObjectWindow.Show();
-                StaticContent.openWindows.Add(changeObjectWindow);
-            }
+            ChangeObjectButton(BookListView);
         }
 
         private void ChangeFilmObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = FilmListView.SelectedItem as ArchiveObject;
-            if (selectedItem != null)
-            {
-                var changeObjectWindow = new ChangeObjectWindow(selectedItem);
-                changeObjectWindow.Show();
-                StaticContent.openWindows.Add(changeObjectWindow);
-            }
+            ChangeObjectButton(FilmListView);
         }
 
         private void ChangeGameObjectButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = GameListView.SelectedItem as ArchiveObject;
+            ChangeObjectButton(GameListView);
+        }
+
+        private void ChangeObjectButton(ListView list)
+        {
+            var selectedItem = list.SelectedItem as ArchiveObject;
             if (selectedItem != null)
             {
                 var changeObjectWindow = new ChangeObjectWindow(selectedItem);

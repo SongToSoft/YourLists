@@ -113,11 +113,9 @@ namespace ArchiveManager.Objects
                     }
                 }
             }
-            //TODO:  Добавить удаление не используемых изображений
             var imageFiles = Directory.GetFiles(Directory.GetCurrentDirectory() + imagesPath);
             for (int i = 0; i < imageFiles.Length; ++i)
             {
-                //Console.WriteLine(imageFiles[i]);
                 bool needDelete = true;
                 for (int j = 0; j < archiveObjects.Count; ++j)
                 {

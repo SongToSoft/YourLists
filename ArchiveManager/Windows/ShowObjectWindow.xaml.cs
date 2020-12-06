@@ -13,8 +13,8 @@ namespace ArchiveManager.Windows
         {
             InitializeComponent();
 
-            this.FontFamily = new FontFamily("Arial");
-            this.FontSize = 14;
+            this.FontFamily = StaticContent.GetFont();
+            this.FontSize = StaticContent.GetFontSize();
 
             selectedArchiveObject = _archiveObject;
             SetValuesInFields();

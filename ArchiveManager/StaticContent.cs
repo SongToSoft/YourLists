@@ -1,12 +1,7 @@
 ﻿using ArchiveManager.Objects;
-using ArchiveManager.Windows;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ArchiveManager
 {
@@ -24,12 +19,28 @@ namespace ArchiveManager
         static public ListView animeListView, bookListView, filmListView, gameListView;
         static public List<MyWindowInterface> openWindows;
         static public Settings setting;
+        static private FontFamily font;
+        static private int fontSize;
+
 
         static public void Init()
         {
             openWindows = new List<MyWindowInterface>();
             setting = new Settings();
             setting.GetSettings();
+
+            font = new FontFamily("Arial");
+            fontSize = 14;
+        }
+
+        static public FontFamily GetFont()
+        {
+            return font;
+        }
+
+        static public int GetFontSize()
+        {
+            return fontSize;
         }
 
         static public string GetErrorNameText()

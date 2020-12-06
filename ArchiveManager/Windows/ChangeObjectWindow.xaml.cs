@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace ArchiveManager.Windows
 {
@@ -17,8 +16,8 @@ namespace ArchiveManager.Windows
         {
             InitializeComponent();
 
-            this.FontFamily = new FontFamily("Arial");
-            this.FontSize = 14;
+            this.FontFamily = StaticContent.GetFont();
+            this.FontSize = StaticContent.GetFontSize();
 
             selectedArchiveObject = archiveObject;
             SetLanguage();
@@ -231,8 +230,8 @@ namespace ArchiveManager.Windows
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
+                        "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                        "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
                 objectImage = op.FileName;
