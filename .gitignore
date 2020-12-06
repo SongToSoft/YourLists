@@ -1,0 +1,8 @@
+DataBase
+ArchiveManager/bin/Release/DataBase/Images/question_icon.png
+ArchiveManager/bin/Release/DataBase/games.json
+ArchiveManager/bin/Release/DataBase/films.json
+ArchiveManager/bin/Release/DataBase/books.json
+ArchiveManager/bin/Release/DataBase/animes.json
+*.json
+*.png
